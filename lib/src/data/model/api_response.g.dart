@@ -29,6 +29,6 @@ T? _$nullableGenericFromJson<T>(
 
 PaginationMeta<T> _$PaginationMetaFromJson<T>(Map<String, dynamic> json) =>
     PaginationMeta<T>(
-      page: (json['page'] as num).toInt(),
-      lastPage: (json['lastPage'] as num).toInt(),
+      page: (json['current_page'] as num).toInt(),
+      lastPage: (json['last_page'] as num).toInt(),
     );

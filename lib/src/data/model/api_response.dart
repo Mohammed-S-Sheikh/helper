@@ -39,7 +39,9 @@ class PaginationMeta<T> {
     required this.lastPage,
   });
 
+  @JsonKey(name: 'current_page')
   final int page;
+  @JsonKey(name: 'last_page')
   final int lastPage;
 
   factory PaginationMeta.fromJson(Map<String, dynamic> json) =>
