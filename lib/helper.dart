@@ -1,5 +1,7 @@
 library;
 
+export 'src/app/app.dart';
+
 export 'src/data/local/local.dart';
 export 'src/data/model/model.dart';
 export 'src/data/network/network.dart';
