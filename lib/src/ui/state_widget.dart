@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helper/src/ui/ui.dart';
 
 class StateWidget extends StatelessWidget {
   const StateWidget({
@@ -18,35 +19,38 @@ class StateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     final subtitle = this.subtitle;
     final action = this.action;
 
     return SingleChildScrollView(
-      child: Center(
-        child: Column(
-          children: [
-            image,
-            const SizedBox(height: 32),
-            Text(
-              title,
-              style: theme.textTheme.headlineMedium,
-            ),
-            if (subtitle != null) ...[
-              const SizedBox(height: 16),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Center(
+          child: Column(
+            children: [
+              image,
+              const SizedBox(height: 24),
               Text(
-                subtitle,
-                style: TextStyle(
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
+                title,
+                style: context.textTheme.headlineSmall,
+                textAlign: TextAlign.center,
               ),
+              if (subtitle != null) ...[
+                const SizedBox(height: 8),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    color: context.colorScheme.onSurfaceVariant,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+              if (action != null) ...[
+                const SizedBox(height: 32),
+                action,
+              ],
             ],
-            if (action != null) ...[
-              const SizedBox(height: 32),
-              action,
-            ],
-          ],
+          ),
         ),
       ),
     );

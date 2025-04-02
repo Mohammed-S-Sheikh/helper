@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:helper/data/data.dart';
-import 'package:helper/ui/consumer/types.dart';
-import 'package:helper/ui/ui.dart';
+import 'package:helper/src/data/model/model.dart';
+import 'package:helper/src/ui/ui.dart';
 
 class FutureConsumer<DataT> extends StatefulWidget {
   const FutureConsumer({

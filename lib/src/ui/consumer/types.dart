@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' show BuildContext, Widget;
-import 'package:helper/data/data.dart';
+import 'package:helper/src/data/model/model.dart';
 
 typedef ConsumerDataBuilder<DataT> = Widget Function(
   BuildContext context,

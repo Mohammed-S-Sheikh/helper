@@ -1,4 +1,4 @@
-import 'package:helper/data/model/failure.dart';
+import 'package:helper/src/data/model/failure.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'api_response.g.dart';

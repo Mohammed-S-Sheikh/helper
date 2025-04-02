@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:helper/data/data.dart';
-import 'package:helper/ui/consumer/types.dart';
+import 'package:helper/src/data/model/model.dart';
+import 'package:helper/src/ui/consumer/types.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class PaginationConsumer<DataT> extends StatefulWidget {
