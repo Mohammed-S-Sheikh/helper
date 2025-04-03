@@ -5,8 +5,8 @@ import 'package:helper/src/ui/widget/communication/communication.dart';
 
 typedef FormSubmitCallback = void Function(Map<String, dynamic> value);
 
-class AppForm extends StatefulWidget {
-  const AppForm({
+class AppFormBuilder extends StatefulWidget {
+  const AppFormBuilder({
     super.key,
     this.alertUnsavedChanges = false,
     this.padding,
@@ -24,10 +24,10 @@ class AppForm extends StatefulWidget {
   final List<Widget> children;
 
   @override
-  State<AppForm> createState() => _AppFormState();
+  State<AppFormBuilder> createState() => _AppFormBuilderState();
 }
 
-class _AppFormState extends State<AppForm> {
+class _AppFormBuilderState extends State<AppFormBuilder> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   bool _loading = false;

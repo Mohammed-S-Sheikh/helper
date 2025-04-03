@@ -50,11 +50,9 @@ class FormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(actions: const [LanguageSelector()]),
-      body: AppForm(
+      body: AppFormBuilder(
         submitLabel: 'login',
-        onSubmit: (value) {
-          print(value);
-        },
+        onSubmit: (value) {},
         children: [
           FormBuilderTextField(
             name: 'text1',
