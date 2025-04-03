@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:helper/src/ui/widget/actions/actions.dart';
 import 'package:helper/src/ui/widget/communication/communication.dart';
 
-typedef FormSubmitCallback = void Function(Map<String, dynamic> value);
+typedef FormSubmitCallback = FutureOr<void> Function(
+  Map<String, dynamic> value,
+);
 
 class AppFormBuilder extends StatefulWidget {
   const AppFormBuilder({
@@ -80,7 +84,7 @@ class _AppFormBuilderState extends State<AppFormBuilder> {
                       final valid = _state.saveAndValidate();
                       if (valid) {
                         try {
-                          widget.onSubmit(_state.value);
+                          await widget.onSubmit(_state.value);
                         } catch (e) {
                           if (context.mounted) {
                             context.showSnackBar(e.toString());
