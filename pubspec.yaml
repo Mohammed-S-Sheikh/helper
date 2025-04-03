@@ -13,15 +13,16 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.2.1
+  flutter_form_builder: ^9.7.0
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^2.0.17
+  form_builder_validators: ^11.1.2
   freezed_annotation: ^2.4.4
   infinite_scroll_pagination: ^5.0.0
-  intl: any
+  intl: ^0.19.0
   json_annotation: ^4.9.0
   pinput: ^5.0.1
-  reactive_forms: ^17.0.1
   retrofit: ^4.4.2
   shared_preferences: ^2.5.2
 
