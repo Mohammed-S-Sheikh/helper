@@ -49,31 +49,3 @@ class _LanguageSelectorState extends State<LanguageSelector> {
     );
   }
 }
-
-class AppDirectionality extends StatefulWidget {
-  const AppDirectionality({
-    super.key,
-    required this.child,
-  });
-
-  final Widget child;
-
-  @override
-  State<AppDirectionality> createState() => _AppDirectionalityState();
-}
-
-class _AppDirectionalityState extends State<AppDirectionality> {
-  final AppLanguage appLanguage = AppLanguage();
-
-  @override
-  Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: appLanguage,
-      builder: (context, _) => Directionality(
-        textDirection:
-            appLanguage.locale.isArabic ? TextDirection.rtl : TextDirection.ltr,
-        child: widget.child,
-      ),
-    );
-  }
-}

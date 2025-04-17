@@ -1,41 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:helper/src/app/app.dart';
-import 'package:helper/src/data/local/local.dart';
+import 'package:helper/src/app/runner.dart';
+import 'package:helper/src/app/wrapper.dart';
 import 'package:helper/src/ui/form/form.dart';
+import 'package:helper/src/ui/theme_selector.dart';
 import 'package:helper/src/ui/ui.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() => appRunner(const MainApp());
 
-  await AppPrefs.initialize();
-  await AppLanguage().loadSavedLanguage();
-
-  runApp(const MainApp());
-}
-
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      locale: AppLanguage().locale,
-      supportedLocales: const [Locale('ar'), Locale('en')],
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      builder: (context, child) => AppDirectionality(child: child!),
+    return AppWrapper(
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+      ),
+      darkTheme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.green,
+          brightness: Brightness.dark,
+        ),
+      ),
       home: const FormScreen(),
     );
   }
@@ -49,7 +37,9 @@ class FormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: const [LanguageSelector()]),
+      appBar: AppBar(
+        actions: const [LanguageSelector(), ThemeSelector()],
+      ),
       body: AppFormBuilder(
         submitLabel: 'login',
         onSubmit: (value) {},
