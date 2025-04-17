@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helper/src/ui/ui.dart';
+import 'package:helper/src/ui/widget/generic_state/types.dart';
+
+part 'state_widget_builders.dart';
 
 class StateWidget extends StatelessWidget {
   const StateWidget({
@@ -15,7 +18,7 @@ class StateWidget extends StatelessWidget {
   final String? subtitle;
   final Widget? action;
 
-  static Widget empty([Widget? action]) => _EmptyStateWidget(action);
+  static StateWidgetBuilders get builders => StateWidgetBuilders();
 
   @override
   Widget build(BuildContext context) {

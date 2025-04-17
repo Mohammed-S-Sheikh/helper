@@ -6,7 +6,7 @@ typedef ConsumerDataBuilder<DataT> = Widget Function(
   DataT data,
 );
 
-typedef ConsumerErrorBuilder = Widget Function(
+typedef ConsumerFailureBuilder = Widget Function(
   BuildContext context,
   ResponseFailure failure,
 );

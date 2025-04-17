@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:helper/src/data/model/model.dart';
+import 'package:helper/src/data/network/network.dart';
 import 'package:helper/src/ui/consumer/types.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class PaginationConsumer<DataT> extends StatefulWidget {
   const PaginationConsumer({
     super.key,
-    required this.future,
+    required this.apiEntry,
     required this.builder,
-    this.onFailure,
+    this.failureBuilder,
   });
 
-  final Future<ApiResponse<List<DataT>>> Function(int page) future;
-
+  final ApiEntry<ApiResponse<List<DataT>>> apiEntry;
   final ConsumerDataBuilder<DataT> builder;
-
-  final ConsumerErrorBuilder? onFailure;
+  final ConsumerFailureBuilder? failureBuilder;
 
   @override
   State<PaginationConsumer<DataT>> createState() =>
@@ -26,7 +25,8 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
   late final _pagingController = PagingController<int, DataT>(
     getNextPageKey: (state) => (state.keys?.last ?? 0) + 1,
     fetchPage: (pageKey) async {
-      final response = await widget.future(pageKey);
+      final entry = widget.apiEntry.withPageKey(pageKey);
+      final response = await ApiRequest.fetchResponse<List<DataT>>(entry);
       _hasMore = response.paginationMeta!.hasMore;
       return response.data!;
     },
@@ -43,7 +43,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () => widget.future(1),
+      onRefresh: () async => _pagingController.refresh(),
       child: PagingListener(
         controller: _pagingController,
         builder: (context, state, fetchNextPage) => PagedListView<int, DataT>(

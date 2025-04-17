@@ -6,8 +6,7 @@ import 'package:helper/src/ui/widget/actions/actions.dart';
 import 'package:helper/src/ui/widget/communication/communication.dart';
 
 typedef FormSubmitCallback = FutureOr<void> Function(
-  Map<String, dynamic> value,
-);
+    Map<String, dynamic> value);
 
 class AppFormBuilder extends StatefulWidget {
   const AppFormBuilder({

@@ -1,3 +1,2 @@
-export 'future_consumer.dart';
-export 'pagination_consumer.dart';
+export 'v2/data_consumer.dart';
 export 'types.dart';
