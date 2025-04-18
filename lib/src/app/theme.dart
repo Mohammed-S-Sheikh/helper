@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:helper/helper.dart';
 
-final class AppTheme extends ChangeNotifier {
-  AppTheme._();
-  static final AppTheme _i = AppTheme._();
-  factory AppTheme() => _i;
+final class HelperTheme extends ChangeNotifier {
+  HelperTheme._();
+  static final HelperTheme _i = HelperTheme._();
+  factory HelperTheme() => _i;
 
   ThemeMode get mode => _mode;
   ThemeMode _mode = ThemeMode.system;
 
   Future<void> changeTo(ThemeMode mode) async {
-    await AppPrefs.i.setString('themeMode', mode.name);
+    await HelperPrefs.i.setString('themeMode', mode.name);
     _mode = mode;
     notifyListeners();
   }
 
   Future<void> loadSavedTheme() async {
-    final themeMode = AppPrefs.i.getString('themeMode');
+    final themeMode = HelperPrefs.i.getString('themeMode');
     _mode = ThemeModeX._fromString(themeMode);
     notifyListeners();
   }

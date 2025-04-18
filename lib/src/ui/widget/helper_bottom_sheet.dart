@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helper/helper.dart';
 
-class AppBottomSheet extends StatelessWidget {
-  const AppBottomSheet({
+class HelperBottomSheet extends StatelessWidget {
+  const HelperBottomSheet({
     super.key,
     bool? showScrollBar,
     this.headerPadding,
@@ -41,7 +41,7 @@ class AppBottomSheet extends StatelessWidget {
         context: context,
         enableDrag: true,
         showDragHandle: true,
-        builder: (context) => AppBottomSheet(
+        builder: (context) => HelperBottomSheet(
           showScrollBar: showScrollBar,
           headerPadding: headerPadding,
           leading: leading,

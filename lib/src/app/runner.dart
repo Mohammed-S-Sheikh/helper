@@ -7,9 +7,9 @@ import 'package:helper/src/data/local/prefs.dart';
 Future<void> appRunner(Widget app) async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AppPrefs.initialize();
-  await AppLanguage().loadSavedLanguage();
-  await AppTheme().loadSavedTheme();
+  await HelperPrefs.initialize();
+  await HelperLanguage().loadSavedLanguage();
+  await HelperTheme().loadSavedTheme();
 
   runApp(app);
 }

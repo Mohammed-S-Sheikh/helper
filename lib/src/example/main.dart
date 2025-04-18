@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppWrapper(
+    return HelperWrapper(
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),

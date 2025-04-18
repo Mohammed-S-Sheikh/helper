@@ -59,12 +59,12 @@ final class ApiRequest {
 
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        final token = AppPrefs.token;
+        final token = HelperPrefs.token;
         if (token != null) {
           options.headers['Authorization'] = 'Bearer $token';
         }
 
-        final language = AppPrefs.language;
+        final language = HelperPrefs.language;
         if (language != null) {
           options.headers['Accept-Language'] = language;
         }

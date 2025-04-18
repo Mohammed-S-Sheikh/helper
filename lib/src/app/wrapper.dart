@@ -3,8 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:helper/src/app/language.dart';
 import 'package:helper/src/app/theme.dart';
 
-class AppWrapper extends StatefulWidget {
-  const AppWrapper({
+class HelperWrapper extends StatefulWidget {
+  const HelperWrapper({
     super.key,
     this.theme,
     this.darkTheme,
@@ -12,7 +12,7 @@ class AppWrapper extends StatefulWidget {
   })  : routerConfig = null,
         routerDelegate = null;
 
-  const AppWrapper.router({
+  const HelperWrapper.router({
     super.key,
     this.routerConfig,
     this.routerDelegate,
@@ -27,24 +27,24 @@ class AppWrapper extends StatefulWidget {
   final Widget? home;
 
   @override
-  State<AppWrapper> createState() => _AppWrapperState();
+  State<HelperWrapper> createState() => _HelperWrapperState();
 }
 
-class _AppWrapperState extends State<AppWrapper> {
-  final AppLanguage _appLanguage = AppLanguage();
-  final AppTheme _appTheme = AppTheme();
+class _HelperWrapperState extends State<HelperWrapper> {
+  final HelperLanguage _helperLanguage = HelperLanguage();
+  final HelperTheme _helperTheme = HelperTheme();
 
   @override
   void initState() {
     super.initState();
-    _appLanguage.addListener(_resetApp);
-    _appTheme.addListener(_resetApp);
+    _helperLanguage.addListener(_resetApp);
+    _helperTheme.addListener(_resetApp);
   }
 
   @override
   void dispose() {
-    _appLanguage.removeListener(_resetApp);
-    _appTheme.removeListener(_resetApp);
+    _helperLanguage.removeListener(_resetApp);
+    _helperTheme.removeListener(_resetApp);
     super.dispose();
   }
 
@@ -54,9 +54,9 @@ class _AppWrapperState extends State<AppWrapper> {
   Widget build(BuildContext context) {
     Widget builder(BuildContext context, Widget? child) {
       return ListenableBuilder(
-        listenable: _appLanguage,
+        listenable: _helperLanguage,
         builder: (context, _) => Directionality(
-          textDirection: _appLanguage.locale.isArabic
+          textDirection: _helperLanguage.locale.isArabic
               ? TextDirection.rtl
               : TextDirection.ltr,
           child: child!,
@@ -75,8 +75,8 @@ class _AppWrapperState extends State<AppWrapper> {
         debugShowCheckedModeBanner: false,
         theme: widget.theme,
         darkTheme: widget.darkTheme,
-        themeMode: _appTheme.mode,
-        locale: AppLanguage().locale,
+        themeMode: _helperTheme.mode,
+        locale: HelperLanguage().locale,
         localizationsDelegates: localizationsDelegates,
         supportedLocales: const [Locale('ar'), Locale('en')],
         home: widget.home,
@@ -90,8 +90,8 @@ class _AppWrapperState extends State<AppWrapper> {
       routerDelegate: widget.routerDelegate,
       theme: widget.theme,
       darkTheme: widget.darkTheme,
-      themeMode: _appTheme.mode,
-      locale: AppLanguage().locale,
+      themeMode: _helperTheme.mode,
+      locale: HelperLanguage().locale,
       localizationsDelegates: localizationsDelegates,
       supportedLocales: const [Locale('ar'), Locale('en')],
       builder: builder,

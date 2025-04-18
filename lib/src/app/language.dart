@@ -2,30 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:helper/src/data/local/local.dart';
 import 'package:intl/intl.dart';
 
-class AppLanguage extends ChangeNotifier {
-  AppLanguage._();
-  static final AppLanguage _i = AppLanguage._();
-  factory AppLanguage() => _i;
+class HelperLanguage extends ChangeNotifier {
+  HelperLanguage._();
+  static final HelperLanguage _i = HelperLanguage._();
+  factory HelperLanguage() => _i;
 
-  final Locale _fallback = _AppLanguageDefaults.fallback;
+  final Locale _fallback = _HelperLanguageDefaults.fallback;
 
-  Locale _locale = _AppLanguageDefaults.fallback;
+  Locale _locale = _HelperLanguageDefaults.fallback;
   Locale get locale => _locale;
 
   Future<void> changeLanguage(String languageCode) async {
-    await AppPrefs.i.setString('languageCode', languageCode);
+    await HelperPrefs.i.setString('languageCode', languageCode);
     _locale = Locale(languageCode);
     notifyListeners();
   }
 
   Future<void> loadSavedLanguage() async {
-    final languageCode = AppPrefs.i.getString('languageCode');
+    final languageCode = HelperPrefs.i.getString('languageCode');
     _locale = languageCode == null ? _fallback : Locale(languageCode);
     notifyListeners();
   }
 }
 
-extension _AppLanguageDefaults on AppLanguage {
+extension _HelperLanguageDefaults on HelperLanguage {
   static Locale get fallback {
     final systemLocale = Intl.systemLocale;
     final languageCode =

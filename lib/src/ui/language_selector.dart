@@ -9,17 +9,17 @@ class LanguageSelector extends StatefulWidget {
 }
 
 class _LanguageSelectorState extends State<LanguageSelector> {
-  final AppLanguage appLanguage = AppLanguage();
+  final HelperLanguage _helperLanguage = HelperLanguage();
 
   @override
   void initState() {
     super.initState();
-    appLanguage.addListener(_onLanguageChanged);
+    _helperLanguage.addListener(_onLanguageChanged);
   }
 
   @override
   void dispose() {
-    appLanguage.removeListener(_onLanguageChanged);
+    _helperLanguage.removeListener(_onLanguageChanged);
     super.dispose();
   }
 
@@ -29,10 +29,10 @@ class _LanguageSelectorState extends State<LanguageSelector> {
 
   @override
   Widget build(BuildContext context) {
-    final isArabic = appLanguage.locale.isArabic;
+    final isArabic = _helperLanguage.locale.isArabic;
 
     return IconButton(
-      onPressed: () => appLanguage.changeLanguage(!isArabic ? 'ar' : 'en'),
+      onPressed: () => _helperLanguage.changeLanguage(!isArabic ? 'ar' : 'en'),
       icon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
