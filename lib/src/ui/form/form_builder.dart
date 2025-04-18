@@ -11,15 +11,18 @@ typedef FormSubmitCallback = FutureOr<void> Function(
 class AppFormBuilder extends StatefulWidget {
   const AppFormBuilder({
     super.key,
-    this.alertUnsavedChanges = false,
+    bool? alertUnsavedChanges,
+    bool? includeSubmitButton,
     this.padding,
     this.submitIcon,
     required this.submitLabel,
     required this.onSubmit,
     required this.children,
-  });
+  })  : alertUnsavedChanges = alertUnsavedChanges ?? false,
+        includeSubmitButton = includeSubmitButton ?? true;
 
   final bool alertUnsavedChanges;
+  final bool includeSubmitButton;
   final EdgeInsetsGeometry? padding;
   final Widget? submitIcon;
   final String submitLabel;
@@ -75,32 +78,33 @@ class _AppFormBuilderState extends State<AppFormBuilder> {
           children: [
             ...widget.children,
             const SizedBox(height: 24),
-            ExpandedButton(
-              onPressed: _loading
-                  ? null
-                  : () async {
-                      setState(() => _loading = true);
-                      final valid = _state.saveAndValidate();
-                      if (valid) {
-                        try {
-                          await widget.onSubmit(_state.value);
-                        } catch (e) {
-                          if (context.mounted) {
-                            context.showSnackBar(e.toString());
+            if (widget.includeSubmitButton)
+              ExpandedButton(
+                onPressed: _loading
+                    ? null
+                    : () async {
+                        setState(() => _loading = true);
+                        final valid = _state.saveAndValidate();
+                        if (valid) {
+                          try {
+                            await widget.onSubmit(_state.value);
+                          } catch (e) {
+                            if (context.mounted) {
+                              context.showSnackBar(e.toString());
+                            }
                           }
                         }
-                      }
-                      setState(() => _loading = false);
-                    },
-              icon: _loading ? null : widget.submitIcon,
-              label: _loading
-                  ? const SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : Text(widget.submitLabel),
-            ),
+                        setState(() => _loading = false);
+                      },
+                icon: _loading ? null : widget.submitIcon,
+                label: _loading
+                    ? const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : Text(widget.submitLabel),
+              ),
           ],
         ),
       ),

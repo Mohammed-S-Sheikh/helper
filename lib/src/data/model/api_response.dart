@@ -1,4 +1,3 @@
-import 'package:helper/src/data/model/failure.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'api_response.g.dart';
@@ -8,17 +7,13 @@ class ApiResponse<T> {
   final String status;
   final String message;
   final T? data;
-  @JsonKey(fromJson: _fromJson)
-  final ResponseFailure? failure;
-  @JsonKey(name: 'meta')
-  final PaginationMeta? paginationMeta;
+  final PaginationMeta? meta;
 
   const ApiResponse({
     required this.status,
     required this.message,
     this.data,
-    this.failure,
-    this.paginationMeta,
+    this.meta,
   });
 
   factory ApiResponse.fromJson(
@@ -26,8 +21,6 @@ class ApiResponse<T> {
     T Function(Object? json) fromJsonT,
   ) =>
       _$ApiResponseFromJson(json, fromJsonT);
-
-  static ResponseFailure? _fromJson(Object? json) => null;
 
   bool get isSuccess => status == 'success';
 }

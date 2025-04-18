@@ -49,12 +49,6 @@ abstract final class AppApi {
   }) async =>
       fromJson(await _AppApiX.fetch(url, method: 'GET'));
 
-  static Future<ApiResponse<T>> getResponse<T>(
-    String url, {
-    required FromJson<T> fromJson,
-  }) =>
-      _AppApiX.responseFetch(url, method: 'GET', fromJson: fromJson);
-
   static Future<Either<ResponseFailure, T>> getEither<T>(
     String url, {
     required FromJson<T> fromJson,
@@ -69,14 +63,6 @@ abstract final class AppApi {
     required FromJson<T> fromJson,
   }) async =>
       fromJson(await _AppApiX.fetch(url, body: body, method: 'POST'));
-
-  static Future<ApiResponse<T>> postResponse<T>(
-    String url, {
-    Object? body,
-    required FromJson<T> fromJson,
-  }) =>
-      _AppApiX.responseFetch(url,
-          body: body, method: 'POST', fromJson: fromJson);
 
   static Future<Either<ResponseFailure, T>> postEither<T>(
     String url, {
@@ -115,29 +101,6 @@ extension _AppApiX on AppApi {
     } catch (e) {
       final failure = ResponseFailure.fromException(e);
       return left(failure);
-    }
-  }
-
-  static Future<ApiResponse<T>> responseFetch<T>(
-    String url, {
-    Object? body,
-    required String method,
-    required FromJson<T> fromJson,
-  }) async {
-    try {
-      final data = await fetch(url, body: body, method: method);
-      return ApiResponse<T>(
-        status: data['status'],
-        message: data['message'],
-        data: fromJson(data['data']),
-        paginationMeta: data['meta'],
-      );
-    } catch (e) {
-      return ApiResponse<T>(
-        status: 'error',
-        message: e.toString(),
-        failure: ResponseFailure.fromException(e),
-      );
     }
   }
 }

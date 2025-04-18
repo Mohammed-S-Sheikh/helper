@@ -63,8 +63,8 @@ class _DataConsumerState<DataT> extends State<DataConsumer<DataT>> {
             return wrapper(StateWidget.builders.getEmptyBuilder());
           }
 
-          if (data is ApiResponse && data.paginationMeta != null) {
-            final meta = data.paginationMeta!;
+          if (data is ApiResponse && data.meta != null) {
+            final meta = data.meta!;
 
             _paginated = true;
             _hasMore = meta.hasMore;
@@ -79,7 +79,7 @@ class _DataConsumerState<DataT> extends State<DataConsumer<DataT>> {
                 final entry = (widget.apiEntry as ApiEntry<ApiResponse>)
                     .withPageKey(pageKey);
                 final response = await ApiRequest.fetchResponse(entry);
-                _hasMore = response.paginationMeta!.hasMore;
+                _hasMore = response.meta!.hasMore;
                 return response.data!;
               },
             );

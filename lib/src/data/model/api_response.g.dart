@@ -14,8 +14,7 @@ ApiResponse<T> _$ApiResponseFromJson<T>(
       status: json['status'] as String,
       message: json['message'] as String,
       data: _$nullableGenericFromJson(json['data'], fromJsonT),
-      failure: ApiResponse._fromJson(json['failure']),
-      paginationMeta: json['meta'] == null
+      meta: json['meta'] == null
           ? null
           : PaginationMeta<dynamic>.fromJson(
               json['meta'] as Map<String, dynamic>),
