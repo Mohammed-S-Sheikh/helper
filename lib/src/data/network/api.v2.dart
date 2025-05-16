@@ -8,17 +8,20 @@ final class ApiEntry<T> {
   final String path;
   final String? method;
   final Object? body;
+  final Map<String, dynamic>? queryParameters;
   final FromJson<T>? fromJson;
 
   const ApiEntry(
     this.path, {
     this.method,
     this.body,
+    this.queryParameters,
     this.fromJson,
   });
 
   const ApiEntry.get(
     this.path, {
+    this.queryParameters,
     this.fromJson,
   })  : method = 'GET',
         body = null;
@@ -27,18 +30,21 @@ final class ApiEntry<T> {
     this.path, {
     this.body,
     this.fromJson,
-  }) : method = 'POST';
+  })  : method = 'POST',
+        queryParameters = null;
 
   ApiEntry<T> copyWith({
     String? path,
     String? method,
     Object? body,
+    Map<String, dynamic>? queryParameters,
     FromJson<T>? fromJson,
   }) {
     return ApiEntry<T>(
       path ?? this.path,
       method: method ?? this.method,
       body: body ?? this.body,
+      queryParameters: queryParameters ?? this.queryParameters,
       fromJson: fromJson ?? this.fromJson,
     );
   }
@@ -133,6 +139,7 @@ extension<T> on ApiEntry {
     return RequestOptions(
       path: path,
       data: body,
+      queryParameters: queryParameters,
       method: method,
       responseType: ResponseType.json,
     );
