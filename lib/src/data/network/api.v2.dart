@@ -33,6 +33,13 @@ final class ApiEntry<T> {
   })  : method = 'POST',
         queryParameters = null;
 
+  const ApiEntry.delete(
+    this.path, {
+    this.fromJson,
+  })  : method = 'DELETE',
+        body = null,
+        queryParameters = null;
+
   ApiEntry<T> copyWith({
     String? path,
     String? method,
