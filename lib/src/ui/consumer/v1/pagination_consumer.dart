@@ -13,7 +13,11 @@ class PaginationConsumer<DataT> extends StatefulWidget {
   });
 
   final ApiEntry<ApiResponse<List<DataT>>> apiEntry;
-  final ConsumerDataBuilder<DataT> builder;
+  final Widget Function(
+    BuildContext context,
+    PagingController controller,
+    DataT data,
+  ) builder;
   final ConsumerFailureBuilder? failureBuilder;
 
   @override
@@ -51,7 +55,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
           fetchNextPage: fetchNextPage,
           builderDelegate: PagedChildBuilderDelegate(
             itemBuilder: (context, item, index) =>
-                widget.builder(context, item),
+                widget.builder(context, _pagingController, item),
           ),
         ),
       ),
