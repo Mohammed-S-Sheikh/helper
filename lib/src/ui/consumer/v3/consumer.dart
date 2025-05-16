@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helper/src/ui/consumer/v3/controller/base_controller.dart';
+import 'package:helper/src/ui/consumer/v3/base_controller.dart';
 
 class Consumer<ControllerT extends BaseController> extends StatelessWidget {
   const Consumer({

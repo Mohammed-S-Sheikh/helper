@@ -34,7 +34,7 @@ class _DataConsumerState<DataT> extends State<DataConsumer<DataT>> {
 
   Future<void> _request() => _future = ApiRequest.fetch(widget.apiEntry);
 
-  Widget Function(ResponseFailure failure) get _failureBuilder {
+  Widget Function(Failure failure) get _failureBuilder {
     return widget.failureBuilder == null
         ? (failure) => Text(failure.message)
         : (failure) => widget.failureBuilder!(context, failure);

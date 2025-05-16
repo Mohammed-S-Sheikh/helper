@@ -5,14 +5,14 @@ extension AsyncSnapshotX<DataT> on AsyncSnapshot<DataT> {
   ResultT map<ResultT>({
     required ResultT Function() loading,
     required ResultT Function(DataT data) loaded,
-    required ResultT Function(ResponseFailure failure) failed,
+    required ResultT Function(Failure failure) failed,
   }) {
     if (connectionState.loading) {
       return loading();
     }
 
     if (hasError) {
-      final failure = ResponseFailure.fromException(error!);
+      final failure = Failure.fromException(error!);
       return failed(failure);
     }
 

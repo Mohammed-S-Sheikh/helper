@@ -19,7 +19,7 @@ class ActionConsumer<T> extends StatelessWidget {
     BuildContext context,
     FutureOr<void> Function([Object? data]) submit,
   ) builder;
-  final void Function(ResponseFailure failure)? onFailure;
+  final void Function(Failure failure)? onFailure;
   final void Function(T data) onSuccess;
 
   @override

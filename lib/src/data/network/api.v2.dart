@@ -93,7 +93,7 @@ final class ApiRequest {
       final response = await fetch<T>(entry);
       return right(response);
     } catch (e) {
-      final failure = ResponseFailure.fromException(e);
+      final failure = Failure.fromException(e);
       return left(failure);
     }
   }

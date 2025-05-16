@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ResponseFailure {
+mixin _$Failure {
   Object get error => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -80,33 +80,31 @@ mixin _$ResponseFailure {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ResponseFailureCopyWith<ResponseFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ResponseFailureCopyWith<$Res> {
-  factory $ResponseFailureCopyWith(
-          ResponseFailure value, $Res Function(ResponseFailure) then) =
-      _$ResponseFailureCopyWithImpl<$Res, ResponseFailure>;
+abstract class $FailureCopyWith<$Res> {
+  factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
+      _$FailureCopyWithImpl<$Res, Failure>;
   @useResult
   $Res call({Object error});
 }
 
 /// @nodoc
-class _$ResponseFailureCopyWithImpl<$Res, $Val extends ResponseFailure>
-    implements $ResponseFailureCopyWith<$Res> {
-  _$ResponseFailureCopyWithImpl(this._value, this._then);
+class _$FailureCopyWithImpl<$Res, $Val extends Failure>
+    implements $FailureCopyWith<$Res> {
+  _$FailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -120,8 +118,7 @@ class _$ResponseFailureCopyWithImpl<$Res, $Val extends ResponseFailure>
 }
 
 /// @nodoc
-abstract class _$$NotFoundImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+abstract class _$$NotFoundImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
   factory _$$NotFoundImplCopyWith(
           _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
       __$$NotFoundImplCopyWithImpl<$Res>;
@@ -132,13 +129,13 @@ abstract class _$$NotFoundImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotFoundImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$NotFoundImpl>
+    extends _$FailureCopyWithImpl<$Res, _$NotFoundImpl>
     implements _$$NotFoundImplCopyWith<$Res> {
   __$$NotFoundImplCopyWithImpl(
       _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -161,7 +158,7 @@ class _$NotFoundImpl extends _NotFound {
 
   @override
   String toString() {
-    return 'ResponseFailure.notFound(error: $error)';
+    return 'Failure.notFound(error: $error)';
   }
 
   @override
@@ -176,7 +173,7 @@ class _$NotFoundImpl extends _NotFound {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -258,14 +255,14 @@ class _$NotFoundImpl extends _NotFound {
   }
 }
 
-abstract class _NotFound extends ResponseFailure {
+abstract class _NotFound extends Failure {
   const factory _NotFound(final Object error) = _$NotFoundImpl;
   const _NotFound._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -275,7 +272,7 @@ abstract class _NotFound extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$BadRequestImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$BadRequestImplCopyWith(
           _$BadRequestImpl value, $Res Function(_$BadRequestImpl) then) =
       __$$BadRequestImplCopyWithImpl<$Res>;
@@ -286,13 +283,13 @@ abstract class _$$BadRequestImplCopyWith<$Res>
 
 /// @nodoc
 class __$$BadRequestImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$BadRequestImpl>
+    extends _$FailureCopyWithImpl<$Res, _$BadRequestImpl>
     implements _$$BadRequestImplCopyWith<$Res> {
   __$$BadRequestImplCopyWithImpl(
       _$BadRequestImpl _value, $Res Function(_$BadRequestImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -315,7 +312,7 @@ class _$BadRequestImpl extends _BadRequest {
 
   @override
   String toString() {
-    return 'ResponseFailure.badRequest(error: $error)';
+    return 'Failure.badRequest(error: $error)';
   }
 
   @override
@@ -330,7 +327,7 @@ class _$BadRequestImpl extends _BadRequest {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -412,14 +409,14 @@ class _$BadRequestImpl extends _BadRequest {
   }
 }
 
-abstract class _BadRequest extends ResponseFailure {
+abstract class _BadRequest extends Failure {
   const factory _BadRequest(final Object error) = _$BadRequestImpl;
   const _BadRequest._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -429,7 +426,7 @@ abstract class _BadRequest extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$UnauthorizedImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$UnauthorizedImplCopyWith(
           _$UnauthorizedImpl value, $Res Function(_$UnauthorizedImpl) then) =
       __$$UnauthorizedImplCopyWithImpl<$Res>;
@@ -440,13 +437,13 @@ abstract class _$$UnauthorizedImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UnauthorizedImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$UnauthorizedImpl>
+    extends _$FailureCopyWithImpl<$Res, _$UnauthorizedImpl>
     implements _$$UnauthorizedImplCopyWith<$Res> {
   __$$UnauthorizedImplCopyWithImpl(
       _$UnauthorizedImpl _value, $Res Function(_$UnauthorizedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -469,7 +466,7 @@ class _$UnauthorizedImpl extends _Unauthorized {
 
   @override
   String toString() {
-    return 'ResponseFailure.unauthorized(error: $error)';
+    return 'Failure.unauthorized(error: $error)';
   }
 
   @override
@@ -484,7 +481,7 @@ class _$UnauthorizedImpl extends _Unauthorized {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -566,14 +563,14 @@ class _$UnauthorizedImpl extends _Unauthorized {
   }
 }
 
-abstract class _Unauthorized extends ResponseFailure {
+abstract class _Unauthorized extends Failure {
   const factory _Unauthorized(final Object error) = _$UnauthorizedImpl;
   const _Unauthorized._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -583,7 +580,7 @@ abstract class _Unauthorized extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$ForbiddenImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$ForbiddenImplCopyWith(
           _$ForbiddenImpl value, $Res Function(_$ForbiddenImpl) then) =
       __$$ForbiddenImplCopyWithImpl<$Res>;
@@ -594,13 +591,13 @@ abstract class _$$ForbiddenImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ForbiddenImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ForbiddenImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ForbiddenImpl>
     implements _$$ForbiddenImplCopyWith<$Res> {
   __$$ForbiddenImplCopyWithImpl(
       _$ForbiddenImpl _value, $Res Function(_$ForbiddenImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -623,7 +620,7 @@ class _$ForbiddenImpl extends _Forbidden {
 
   @override
   String toString() {
-    return 'ResponseFailure.forbidden(error: $error)';
+    return 'Failure.forbidden(error: $error)';
   }
 
   @override
@@ -638,7 +635,7 @@ class _$ForbiddenImpl extends _Forbidden {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -720,14 +717,14 @@ class _$ForbiddenImpl extends _Forbidden {
   }
 }
 
-abstract class _Forbidden extends ResponseFailure {
+abstract class _Forbidden extends Failure {
   const factory _Forbidden(final Object error) = _$ForbiddenImpl;
   const _Forbidden._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -736,8 +733,7 @@ abstract class _Forbidden extends ResponseFailure {
 }
 
 /// @nodoc
-abstract class _$$ConflictImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+abstract class _$$ConflictImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
   factory _$$ConflictImplCopyWith(
           _$ConflictImpl value, $Res Function(_$ConflictImpl) then) =
       __$$ConflictImplCopyWithImpl<$Res>;
@@ -748,13 +744,13 @@ abstract class _$$ConflictImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ConflictImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ConflictImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ConflictImpl>
     implements _$$ConflictImplCopyWith<$Res> {
   __$$ConflictImplCopyWithImpl(
       _$ConflictImpl _value, $Res Function(_$ConflictImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -777,7 +773,7 @@ class _$ConflictImpl extends _Conflict {
 
   @override
   String toString() {
-    return 'ResponseFailure.conflict(error: $error)';
+    return 'Failure.conflict(error: $error)';
   }
 
   @override
@@ -792,7 +788,7 @@ class _$ConflictImpl extends _Conflict {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -874,14 +870,14 @@ class _$ConflictImpl extends _Conflict {
   }
 }
 
-abstract class _Conflict extends ResponseFailure {
+abstract class _Conflict extends Failure {
   const factory _Conflict(final Object error) = _$ConflictImpl;
   const _Conflict._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -891,7 +887,7 @@ abstract class _Conflict extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$ServerErrorImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$ServerErrorImplCopyWith(
           _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
       __$$ServerErrorImplCopyWithImpl<$Res>;
@@ -902,13 +898,13 @@ abstract class _$$ServerErrorImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ServerErrorImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ServerErrorImpl>
     implements _$$ServerErrorImplCopyWith<$Res> {
   __$$ServerErrorImplCopyWithImpl(
       _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -931,7 +927,7 @@ class _$ServerErrorImpl extends _ServerError {
 
   @override
   String toString() {
-    return 'ResponseFailure.serverError(error: $error)';
+    return 'Failure.serverError(error: $error)';
   }
 
   @override
@@ -946,7 +942,7 @@ class _$ServerErrorImpl extends _ServerError {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1028,14 +1024,14 @@ class _$ServerErrorImpl extends _ServerError {
   }
 }
 
-abstract class _ServerError extends ResponseFailure {
+abstract class _ServerError extends Failure {
   const factory _ServerError(final Object error) = _$ServerErrorImpl;
   const _ServerError._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1045,7 +1041,7 @@ abstract class _ServerError extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$ServiceUnavailableImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$ServiceUnavailableImplCopyWith(_$ServiceUnavailableImpl value,
           $Res Function(_$ServiceUnavailableImpl) then) =
       __$$ServiceUnavailableImplCopyWithImpl<$Res>;
@@ -1056,13 +1052,13 @@ abstract class _$$ServiceUnavailableImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ServiceUnavailableImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ServiceUnavailableImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ServiceUnavailableImpl>
     implements _$$ServiceUnavailableImplCopyWith<$Res> {
   __$$ServiceUnavailableImplCopyWithImpl(_$ServiceUnavailableImpl _value,
       $Res Function(_$ServiceUnavailableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1085,7 +1081,7 @@ class _$ServiceUnavailableImpl extends _ServiceUnavailable {
 
   @override
   String toString() {
-    return 'ResponseFailure.serviceUnavailable(error: $error)';
+    return 'Failure.serviceUnavailable(error: $error)';
   }
 
   @override
@@ -1100,7 +1096,7 @@ class _$ServiceUnavailableImpl extends _ServiceUnavailable {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1183,7 +1179,7 @@ class _$ServiceUnavailableImpl extends _ServiceUnavailable {
   }
 }
 
-abstract class _ServiceUnavailable extends ResponseFailure {
+abstract class _ServiceUnavailable extends Failure {
   const factory _ServiceUnavailable(final Object error) =
       _$ServiceUnavailableImpl;
   const _ServiceUnavailable._() : super._();
@@ -1191,7 +1187,7 @@ abstract class _ServiceUnavailable extends ResponseFailure {
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1201,7 +1197,7 @@ abstract class _ServiceUnavailable extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$TooManyRequestsImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl value,
           $Res Function(_$TooManyRequestsImpl) then) =
       __$$TooManyRequestsImplCopyWithImpl<$Res>;
@@ -1212,13 +1208,13 @@ abstract class _$$TooManyRequestsImplCopyWith<$Res>
 
 /// @nodoc
 class __$$TooManyRequestsImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$TooManyRequestsImpl>
+    extends _$FailureCopyWithImpl<$Res, _$TooManyRequestsImpl>
     implements _$$TooManyRequestsImplCopyWith<$Res> {
   __$$TooManyRequestsImplCopyWithImpl(
       _$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1241,7 +1237,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
 
   @override
   String toString() {
-    return 'ResponseFailure.tooManyRequests(error: $error)';
+    return 'Failure.tooManyRequests(error: $error)';
   }
 
   @override
@@ -1256,7 +1252,7 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1339,14 +1335,14 @@ class _$TooManyRequestsImpl extends _TooManyRequests {
   }
 }
 
-abstract class _TooManyRequests extends ResponseFailure {
+abstract class _TooManyRequests extends Failure {
   const factory _TooManyRequests(final Object error) = _$TooManyRequestsImpl;
   const _TooManyRequests._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1355,8 +1351,7 @@ abstract class _TooManyRequests extends ResponseFailure {
 }
 
 /// @nodoc
-abstract class _$$UnknownImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+abstract class _$$UnknownImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
   factory _$$UnknownImplCopyWith(
           _$UnknownImpl value, $Res Function(_$UnknownImpl) then) =
       __$$UnknownImplCopyWithImpl<$Res>;
@@ -1367,13 +1362,13 @@ abstract class _$$UnknownImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UnknownImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$UnknownImpl>
+    extends _$FailureCopyWithImpl<$Res, _$UnknownImpl>
     implements _$$UnknownImplCopyWith<$Res> {
   __$$UnknownImplCopyWithImpl(
       _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1396,7 +1391,7 @@ class _$UnknownImpl extends _Unknown {
 
   @override
   String toString() {
-    return 'ResponseFailure.unknown(error: $error)';
+    return 'Failure.unknown(error: $error)';
   }
 
   @override
@@ -1411,7 +1406,7 @@ class _$UnknownImpl extends _Unknown {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1493,14 +1488,14 @@ class _$UnknownImpl extends _Unknown {
   }
 }
 
-abstract class _Unknown extends ResponseFailure {
+abstract class _Unknown extends Failure {
   const factory _Unknown(final Object error) = _$UnknownImpl;
   const _Unknown._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1510,7 +1505,7 @@ abstract class _Unknown extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$ConnectionTimeoutImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$ConnectionTimeoutImplCopyWith(_$ConnectionTimeoutImpl value,
           $Res Function(_$ConnectionTimeoutImpl) then) =
       __$$ConnectionTimeoutImplCopyWithImpl<$Res>;
@@ -1521,13 +1516,13 @@ abstract class _$$ConnectionTimeoutImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ConnectionTimeoutImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ConnectionTimeoutImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ConnectionTimeoutImpl>
     implements _$$ConnectionTimeoutImplCopyWith<$Res> {
   __$$ConnectionTimeoutImplCopyWithImpl(_$ConnectionTimeoutImpl _value,
       $Res Function(_$ConnectionTimeoutImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1550,7 +1545,7 @@ class _$ConnectionTimeoutImpl extends _ConnectionTimeout {
 
   @override
   String toString() {
-    return 'ResponseFailure.connectionTimeout(error: $error)';
+    return 'Failure.connectionTimeout(error: $error)';
   }
 
   @override
@@ -1565,7 +1560,7 @@ class _$ConnectionTimeoutImpl extends _ConnectionTimeout {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1648,7 +1643,7 @@ class _$ConnectionTimeoutImpl extends _ConnectionTimeout {
   }
 }
 
-abstract class _ConnectionTimeout extends ResponseFailure {
+abstract class _ConnectionTimeout extends Failure {
   const factory _ConnectionTimeout(final Object error) =
       _$ConnectionTimeoutImpl;
   const _ConnectionTimeout._() : super._();
@@ -1656,7 +1651,7 @@ abstract class _ConnectionTimeout extends ResponseFailure {
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1666,7 +1661,7 @@ abstract class _ConnectionTimeout extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$SendTimeoutImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$SendTimeoutImplCopyWith(
           _$SendTimeoutImpl value, $Res Function(_$SendTimeoutImpl) then) =
       __$$SendTimeoutImplCopyWithImpl<$Res>;
@@ -1677,13 +1672,13 @@ abstract class _$$SendTimeoutImplCopyWith<$Res>
 
 /// @nodoc
 class __$$SendTimeoutImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$SendTimeoutImpl>
+    extends _$FailureCopyWithImpl<$Res, _$SendTimeoutImpl>
     implements _$$SendTimeoutImplCopyWith<$Res> {
   __$$SendTimeoutImplCopyWithImpl(
       _$SendTimeoutImpl _value, $Res Function(_$SendTimeoutImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1706,7 +1701,7 @@ class _$SendTimeoutImpl extends _SendTimeout {
 
   @override
   String toString() {
-    return 'ResponseFailure.sendTimeout(error: $error)';
+    return 'Failure.sendTimeout(error: $error)';
   }
 
   @override
@@ -1721,7 +1716,7 @@ class _$SendTimeoutImpl extends _SendTimeout {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1803,14 +1798,14 @@ class _$SendTimeoutImpl extends _SendTimeout {
   }
 }
 
-abstract class _SendTimeout extends ResponseFailure {
+abstract class _SendTimeout extends Failure {
   const factory _SendTimeout(final Object error) = _$SendTimeoutImpl;
   const _SendTimeout._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1820,7 +1815,7 @@ abstract class _SendTimeout extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$ReceiveTimeoutImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$ReceiveTimeoutImplCopyWith(_$ReceiveTimeoutImpl value,
           $Res Function(_$ReceiveTimeoutImpl) then) =
       __$$ReceiveTimeoutImplCopyWithImpl<$Res>;
@@ -1831,13 +1826,13 @@ abstract class _$$ReceiveTimeoutImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ReceiveTimeoutImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ReceiveTimeoutImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ReceiveTimeoutImpl>
     implements _$$ReceiveTimeoutImplCopyWith<$Res> {
   __$$ReceiveTimeoutImplCopyWithImpl(
       _$ReceiveTimeoutImpl _value, $Res Function(_$ReceiveTimeoutImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1860,7 +1855,7 @@ class _$ReceiveTimeoutImpl extends _ReceiveTimeout {
 
   @override
   String toString() {
-    return 'ResponseFailure.receiveTimeout(error: $error)';
+    return 'Failure.receiveTimeout(error: $error)';
   }
 
   @override
@@ -1875,7 +1870,7 @@ class _$ReceiveTimeoutImpl extends _ReceiveTimeout {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -1958,14 +1953,14 @@ class _$ReceiveTimeoutImpl extends _ReceiveTimeout {
   }
 }
 
-abstract class _ReceiveTimeout extends ResponseFailure {
+abstract class _ReceiveTimeout extends Failure {
   const factory _ReceiveTimeout(final Object error) = _$ReceiveTimeoutImpl;
   const _ReceiveTimeout._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1974,8 +1969,7 @@ abstract class _ReceiveTimeout extends ResponseFailure {
 }
 
 /// @nodoc
-abstract class _$$CancelImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+abstract class _$$CancelImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
   factory _$$CancelImplCopyWith(
           _$CancelImpl value, $Res Function(_$CancelImpl) then) =
       __$$CancelImplCopyWithImpl<$Res>;
@@ -1986,13 +1980,13 @@ abstract class _$$CancelImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CancelImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$CancelImpl>
+    extends _$FailureCopyWithImpl<$Res, _$CancelImpl>
     implements _$$CancelImplCopyWith<$Res> {
   __$$CancelImplCopyWithImpl(
       _$CancelImpl _value, $Res Function(_$CancelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2015,7 +2009,7 @@ class _$CancelImpl extends _Cancel {
 
   @override
   String toString() {
-    return 'ResponseFailure.cancel(error: $error)';
+    return 'Failure.cancel(error: $error)';
   }
 
   @override
@@ -2030,7 +2024,7 @@ class _$CancelImpl extends _Cancel {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -2112,14 +2106,14 @@ class _$CancelImpl extends _Cancel {
   }
 }
 
-abstract class _Cancel extends ResponseFailure {
+abstract class _Cancel extends Failure {
   const factory _Cancel(final Object error) = _$CancelImpl;
   const _Cancel._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2129,7 +2123,7 @@ abstract class _Cancel extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$BadCertificateImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$BadCertificateImplCopyWith(_$BadCertificateImpl value,
           $Res Function(_$BadCertificateImpl) then) =
       __$$BadCertificateImplCopyWithImpl<$Res>;
@@ -2140,13 +2134,13 @@ abstract class _$$BadCertificateImplCopyWith<$Res>
 
 /// @nodoc
 class __$$BadCertificateImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$BadCertificateImpl>
+    extends _$FailureCopyWithImpl<$Res, _$BadCertificateImpl>
     implements _$$BadCertificateImplCopyWith<$Res> {
   __$$BadCertificateImplCopyWithImpl(
       _$BadCertificateImpl _value, $Res Function(_$BadCertificateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2169,7 +2163,7 @@ class _$BadCertificateImpl extends _BadCertificate {
 
   @override
   String toString() {
-    return 'ResponseFailure.badCertificate(error: $error)';
+    return 'Failure.badCertificate(error: $error)';
   }
 
   @override
@@ -2184,7 +2178,7 @@ class _$BadCertificateImpl extends _BadCertificate {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -2267,14 +2261,14 @@ class _$BadCertificateImpl extends _BadCertificate {
   }
 }
 
-abstract class _BadCertificate extends ResponseFailure {
+abstract class _BadCertificate extends Failure {
   const factory _BadCertificate(final Object error) = _$BadCertificateImpl;
   const _BadCertificate._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2284,7 +2278,7 @@ abstract class _BadCertificate extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$ConnectionErrorImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$ConnectionErrorImplCopyWith(_$ConnectionErrorImpl value,
           $Res Function(_$ConnectionErrorImpl) then) =
       __$$ConnectionErrorImplCopyWithImpl<$Res>;
@@ -2295,13 +2289,13 @@ abstract class _$$ConnectionErrorImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ConnectionErrorImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$ConnectionErrorImpl>
+    extends _$FailureCopyWithImpl<$Res, _$ConnectionErrorImpl>
     implements _$$ConnectionErrorImplCopyWith<$Res> {
   __$$ConnectionErrorImplCopyWithImpl(
       _$ConnectionErrorImpl _value, $Res Function(_$ConnectionErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2324,7 +2318,7 @@ class _$ConnectionErrorImpl extends _ConnectionError {
 
   @override
   String toString() {
-    return 'ResponseFailure.connectionError(error: $error)';
+    return 'Failure.connectionError(error: $error)';
   }
 
   @override
@@ -2339,7 +2333,7 @@ class _$ConnectionErrorImpl extends _ConnectionError {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -2422,14 +2416,14 @@ class _$ConnectionErrorImpl extends _ConnectionError {
   }
 }
 
-abstract class _ConnectionError extends ResponseFailure {
+abstract class _ConnectionError extends Failure {
   const factory _ConnectionError(final Object error) = _$ConnectionErrorImpl;
   const _ConnectionError._() : super._();
 
   @override
   Object get error;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2439,7 +2433,7 @@ abstract class _ConnectionError extends ResponseFailure {
 
 /// @nodoc
 abstract class _$$UnprocessableEntityImplCopyWith<$Res>
-    implements $ResponseFailureCopyWith<$Res> {
+    implements $FailureCopyWith<$Res> {
   factory _$$UnprocessableEntityImplCopyWith(_$UnprocessableEntityImpl value,
           $Res Function(_$UnprocessableEntityImpl) then) =
       __$$UnprocessableEntityImplCopyWithImpl<$Res>;
@@ -2450,13 +2444,13 @@ abstract class _$$UnprocessableEntityImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UnprocessableEntityImplCopyWithImpl<$Res>
-    extends _$ResponseFailureCopyWithImpl<$Res, _$UnprocessableEntityImpl>
+    extends _$FailureCopyWithImpl<$Res, _$UnprocessableEntityImpl>
     implements _$$UnprocessableEntityImplCopyWith<$Res> {
   __$$UnprocessableEntityImplCopyWithImpl(_$UnprocessableEntityImpl _value,
       $Res Function(_$UnprocessableEntityImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2494,7 +2488,7 @@ class _$UnprocessableEntityImpl extends _UnprocessableEntity {
 
   @override
   String toString() {
-    return 'ResponseFailure.unprocessableEntity(error: $error, validation: $validation)';
+    return 'Failure.unprocessableEntity(error: $error, validation: $validation)';
   }
 
   @override
@@ -2513,7 +2507,7 @@ class _$UnprocessableEntityImpl extends _UnprocessableEntity {
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(_validation));
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -2596,7 +2590,7 @@ class _$UnprocessableEntityImpl extends _UnprocessableEntity {
   }
 }
 
-abstract class _UnprocessableEntity extends ResponseFailure {
+abstract class _UnprocessableEntity extends Failure {
   const factory _UnprocessableEntity(
           final Object error, final Map<String, dynamic> validation) =
       _$UnprocessableEntityImpl;
@@ -2606,7 +2600,7 @@ abstract class _UnprocessableEntity extends ResponseFailure {
   Object get error;
   Map<String, dynamic> get validation;
 
-  /// Create a copy of ResponseFailure
+  /// Create a copy of Failure
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)

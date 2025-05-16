@@ -49,7 +49,7 @@ abstract final class AppApi {
   }) async =>
       fromJson(await _AppApiX.fetch(url, method: 'GET'));
 
-  static Future<Either<ResponseFailure, T>> getEither<T>(
+  static Future<Either<Failure, T>> getEither<T>(
     String url, {
     required FromJson<T> fromJson,
   }) =>
@@ -64,7 +64,7 @@ abstract final class AppApi {
   }) async =>
       fromJson(await _AppApiX.fetch(url, body: body, method: 'POST'));
 
-  static Future<Either<ResponseFailure, T>> postEither<T>(
+  static Future<Either<Failure, T>> postEither<T>(
     String url, {
     Object? body,
     required FromJson<T> fromJson,
@@ -89,7 +89,7 @@ extension _AppApiX on AppApi {
     return response.data!;
   }
 
-  static Future<Either<ResponseFailure, T>> eitherFetch<T>(
+  static Future<Either<Failure, T>> eitherFetch<T>(
     String url, {
     Object? body,
     required String method,
@@ -99,7 +99,7 @@ extension _AppApiX on AppApi {
       final data = await fetch(url, body: body, method: method);
       return right(fromJson(data));
     } catch (e) {
-      final failure = ResponseFailure.fromException(e);
+      final failure = Failure.fromException(e);
       return left(failure);
     }
   }

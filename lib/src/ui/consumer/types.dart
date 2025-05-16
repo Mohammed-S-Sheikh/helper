@@ -8,5 +8,5 @@ typedef ConsumerDataBuilder<DataT> = Widget Function(
 
 typedef ConsumerFailureBuilder = Widget Function(
   BuildContext context,
-  ResponseFailure failure,
+  Failure failure,
 );
