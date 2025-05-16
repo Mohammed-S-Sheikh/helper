@@ -88,7 +88,7 @@ final class ApiRequest {
   }
 
   static Future<T> fetch<T>(ApiEntry<T> entry) async {
-    final response = await ApiRequest._dio.fetch<Json>(entry.options);
+    final response = await _dio.fetch<Json>(entry.options);
     return entry.fromJson == null
         ? response.data as T
         : entry.fromJson!(response.data!);
@@ -136,7 +136,11 @@ extension ApiEntryX<DataT> on ApiEntry<ApiResponse<DataT>> {
 
 extension<T> on ApiEntry {
   RequestOptions get options {
+    final baseOptions = ApiRequest._dio.options;
     return RequestOptions(
+      baseUrl: baseOptions.baseUrl,
+      followRedirects: baseOptions.followRedirects,
+      validateStatus: baseOptions.validateStatus,
       path: path,
       data: body,
       queryParameters: queryParameters,
