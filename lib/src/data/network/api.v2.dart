@@ -82,6 +82,9 @@ final class ApiRequest {
           options.headers['Accept-Language'] = language;
         }
 
+        options.headers['Accept'] = 'application/json';
+        options.headers['Content-Type'] = 'application/json';
+
         handler.next(options);
       },
       onError: (error, handler) {
@@ -153,6 +156,7 @@ extension<T> on ApiEntry {
       queryParameters: queryParameters,
       method: method,
       responseType: ResponseType.json,
+      contentType: 'application/json',
     );
   }
 }
