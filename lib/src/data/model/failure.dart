@@ -26,9 +26,10 @@ class Failure with _$Failure {
   const factory Failure.unprocessableEntity(
       Object error, Map<String, dynamic> validation) = _UnprocessableEntity;
 
-  const Failure._();
+  Failure._();
 
-  String get message => 'Something went wrong';
+  String? _message;
+  String get message => _message ?? 'Unknown error';
 
   Object? get errorObject {
     return map(
@@ -77,7 +78,8 @@ class Failure with _$Failure {
         DioExceptionType.unknown => Failure.unknown(error),
         DioExceptionType.badCertificate => Failure.badCertificate(error),
         DioExceptionType.connectionError => Failure.connectionError(error),
-      };
+      }
+        .._message = error.message;
     }
 
     return switch (error) {
