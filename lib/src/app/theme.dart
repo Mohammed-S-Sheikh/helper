@@ -24,8 +24,26 @@ final class HelperTheme extends ChangeNotifier {
 
 extension ThemeModeX on ThemeMode {
   bool get isSystem => this == ThemeMode.system;
-  bool get isLight => this == ThemeMode.light;
-  bool get isDark => this == ThemeMode.dark;
+
+  bool isLight(BuildContext context) {
+    if (isSystem) {
+      return _isSystemLight(context);
+    }
+
+    return this == ThemeMode.light;
+  }
+
+  bool isDark(BuildContext context) {
+    if (isSystem) {
+      return !_isSystemLight(context);
+    }
+
+    return this == ThemeMode.dark;
+  }
+
+  IconData getThemeIcon(BuildContext context) {
+    return isLight(context) ? Icons.light_mode : Icons.dark_mode;
+  }
 
   static ThemeMode _fromString(String? value) {
     return ThemeMode.values.firstWhere(
@@ -34,15 +52,8 @@ extension ThemeModeX on ThemeMode {
     );
   }
 
-  IconData getThemeIcon(BuildContext context) {
-    IconData returnIcon(bool isLight) =>
-        isLight ? Icons.light_mode : Icons.dark_mode;
-
-    if (isSystem) {
-      final Brightness brightness = MediaQuery.of(context).platformBrightness;
-      return returnIcon(brightness == Brightness.light);
-    } else {
-      return returnIcon(isLight);
-    }
+  bool _isSystemLight(BuildContext context) {
+    final Brightness brightness = MediaQuery.of(context).platformBrightness;
+    return brightness == Brightness.light;
   }
 }
