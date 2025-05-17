@@ -78,7 +78,7 @@ class _DataConsumerState<DataT> extends State<DataConsumer<DataT>> {
               fetchPage: (pageKey) async {
                 final entry = (widget.apiEntry as ApiEntry<ApiResponse>)
                     .withPageKey(pageKey);
-                final response = await ApiRequest.fetchResponse(entry);
+                final response = await ApiRequest.fetch(entry);
                 _hasMore = response.meta!.hasMore;
                 return response.data!;
               },

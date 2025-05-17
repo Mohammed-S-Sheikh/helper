@@ -114,27 +114,27 @@ final class ApiRequest {
     }
   }
 
-  static Future<ApiResponse<T>> fetchResponse<T>(
-    ApiEntry<dynamic> entry,
-  ) async {
-    if (entry.fromJson == null) {
-      entry = entry.copyWith(
-        fromJson: (json) => ApiResponse<T>.fromJson(
-          json,
-          (data) => data as T,
-        ),
-      );
-    } else if (entry.fromJson != ApiResponse<T>.fromJson) {
-      entry = entry.copyWith(
-        fromJson: (json) => ApiResponse<T>.fromJson(
-          json,
-          (data) => entry.fromJson!(data as Json) as T,
-        ),
-      );
-    }
+  // static Future<ApiResponse<T>> fetchResponse<T>(
+  //   ApiEntry<dynamic> entry,
+  // ) async {
+  //   if (entry.fromJson == null) {
+  //     entry = entry.copyWith(
+  //       fromJson: (json) => ApiResponse<T>.fromJson(
+  //         json,
+  //         (data) => data as T,
+  //       ),
+  //     );
+  //   } else if (entry.fromJson != ApiResponse<T>.fromJson) {
+  //     entry = entry.copyWith(
+  //       fromJson: (json) => ApiResponse<T>.fromJson(
+  //         json,
+  //         (data) => entry.fromJson!(data as Json) as T,
+  //       ),
+  //     );
+  //   }
 
-    return fetch<ApiResponse<T>>(entry as ApiEntry<ApiResponse<T>>);
-  }
+  //   return fetch<ApiResponse<T>>(entry as ApiEntry<ApiResponse<T>>);
+  // }
 }
 
 extension ApiEntryX<DataT> on ApiEntry<ApiResponse<DataT>> {

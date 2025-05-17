@@ -30,7 +30,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
     getNextPageKey: (state) => (state.keys?.last ?? 0) + 1,
     fetchPage: (pageKey) async {
       final entry = widget.apiEntry.withPageKey(pageKey);
-      final response = await ApiRequest.fetchResponse<List<DataT>>(entry);
+      final response = await ApiRequest.fetch(entry);
       _hasMore = response.meta!.hasMore;
       return response.data!;
     },
