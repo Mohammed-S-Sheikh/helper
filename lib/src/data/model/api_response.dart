@@ -4,14 +4,12 @@ part 'api_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true, createToJson: false)
 class ApiResponse<T> {
-  final String status;
-  final String message;
+  final String? message;
   final T? data;
   final PaginationMeta? meta;
 
   const ApiResponse({
-    required this.status,
-    required this.message,
+    this.message,
     this.data,
     this.meta,
   });
@@ -21,8 +19,6 @@ class ApiResponse<T> {
     T Function(Object? json) fromJsonT,
   ) =>
       _$ApiResponseFromJson(json, fromJsonT);
-
-  bool get isSuccess => status == 'success';
 }
 
 @JsonSerializable(createToJson: false)
