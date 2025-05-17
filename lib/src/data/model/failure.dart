@@ -33,7 +33,7 @@ class Failure with _$Failure {
 
     String? value;
     if (error is DioException) {
-      value = error.message;
+      value = error.response?.data['message'] ?? error.message;
     }
 
     return value ?? 'Unknown error';
