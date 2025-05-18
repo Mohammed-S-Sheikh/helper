@@ -8,6 +8,11 @@ class HelperWrapper extends StatefulWidget {
     super.key,
     this.theme,
     this.darkTheme,
+    this.localizationsDelegates,
+    this.supportedLocales = const <Locale>[
+      Locale('ar'),
+      Locale('en', 'US'),
+    ],
     this.home,
   })  : routerConfig = null,
         routerDelegate = null;
@@ -16,12 +21,19 @@ class HelperWrapper extends StatefulWidget {
     super.key,
     this.routerConfig,
     this.routerDelegate,
+    this.localizationsDelegates,
     this.theme,
     this.darkTheme,
+    this.supportedLocales = const <Locale>[
+      Locale('ar'),
+      Locale('en', 'US'),
+    ],
   }) : home = null;
 
   final RouterConfig<Object>? routerConfig;
   final RouterDelegate<Object>? routerDelegate;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final Iterable<Locale> supportedLocales;
   final ThemeData? theme;
   final ThemeData? darkTheme;
   final Widget? home;
@@ -50,6 +62,15 @@ class _HelperWrapperState extends State<HelperWrapper> {
 
   void _resetApp() => setState(() {});
 
+  Iterable<LocalizationsDelegate<dynamic>> get _localizationsDelegates {
+    return widget.localizationsDelegates ??
+        [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ];
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget builder(BuildContext context, Widget? child) {
@@ -64,12 +85,6 @@ class _HelperWrapperState extends State<HelperWrapper> {
       );
     }
 
-    const localizationsDelegates = [
-      GlobalMaterialLocalizations.delegate,
-      GlobalWidgetsLocalizations.delegate,
-      GlobalCupertinoLocalizations.delegate,
-    ];
-
     if (widget.home != null) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -77,8 +92,8 @@ class _HelperWrapperState extends State<HelperWrapper> {
         darkTheme: widget.darkTheme,
         themeMode: _helperTheme.mode,
         locale: HelperLanguage().locale,
-        localizationsDelegates: localizationsDelegates,
-        supportedLocales: const [Locale('ar'), Locale('en')],
+        localizationsDelegates: _localizationsDelegates,
+        supportedLocales: widget.supportedLocales,
         home: widget.home,
         builder: builder,
       );
@@ -92,8 +107,8 @@ class _HelperWrapperState extends State<HelperWrapper> {
       darkTheme: widget.darkTheme,
       themeMode: _helperTheme.mode,
       locale: HelperLanguage().locale,
-      localizationsDelegates: localizationsDelegates,
-      supportedLocales: const [Locale('ar'), Locale('en')],
+      localizationsDelegates: _localizationsDelegates,
+      supportedLocales: widget.supportedLocales,
       builder: builder,
     );
   }
