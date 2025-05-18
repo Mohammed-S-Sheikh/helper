@@ -19,7 +19,7 @@ extension ThemeDataX on ThemeData {
         icon: Icons.color_lens_outlined,
         size: 36,
       ),
-      title: Text('الوضع'),
+      title: Text(context.helperL10n.theme),
       bodyPadding: const EdgeInsets.symmetric(horizontal: 8),
       body: SingleChildScrollView(
         child: Column(
@@ -31,7 +31,7 @@ extension ThemeDataX on ThemeData {
                   selected: mode == helperTheme.mode,
                   selectedTileColor: context.colorScheme.primaryContainer,
                   leading: Icon(mode.icon),
-                  title: Text(mode.label),
+                  title: Text(mode.getLabel(context)),
                   trailing: mode == helperTheme.mode ? Icon(Icons.check) : null,
                   onTap: () => changeTo(mode),
                 ),
@@ -44,10 +44,10 @@ extension ThemeDataX on ThemeData {
 }
 
 extension on ThemeMode {
-  String get label => switch (this) {
-        ThemeMode.system => 'وضع النظام',
-        ThemeMode.light => 'الوضع الفاتح',
-        ThemeMode.dark => 'الوضع الداكن',
+  String getLabel(BuildContext context) => switch (this) {
+        ThemeMode.system => context.helperL10n.systemTheme,
+        ThemeMode.light => context.helperL10n.lightTheme,
+        ThemeMode.dark => context.helperL10n.darkTheme,
       };
 
   IconData get icon => switch (this) {

@@ -73,7 +73,7 @@ class _EmptyStateWidget extends StatelessWidget {
         size: 100,
         color: Theme.of(context).colorScheme.onSurfaceVariant,
       ),
-      title: 'No Results',
+      title: context.helperL10n.noResults,
       action: action,
     );
   }

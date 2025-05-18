@@ -1,0 +1,6 @@
+arb-dir: lib/src/l10n
+template-arb-file: helper_ar.arb
+output-localization-file: helper_localizations.dart
+output-class: HelperLocalizations
+
+synthetic-package: false

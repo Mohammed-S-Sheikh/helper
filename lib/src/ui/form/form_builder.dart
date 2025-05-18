@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:helper/src/ui/context_extension.dart';
 import 'package:helper/src/ui/widget/actions/actions.dart';
 import 'package:helper/src/ui/widget/communication/communication.dart';
 
@@ -53,20 +54,19 @@ class _AppFormBuilderState extends State<AppFormBuilder> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('تغييرات غير محفوظة'),
-            content: Text(
-                'توجد لديك تغييرات غير محفوظة، هل تريد مغادرة هذه الصفحة؟'),
+            title: Text(context.helperL10n.unsavedChanges),
+            content: Text(context.helperL10n.unsavedChangesWarning),
             actions: [
               TextButton(
                 onPressed: Navigator.of(context).pop,
-                child: const Text('إلغاء'),
+                child: Text(context.helperL10n.cancel),
               ),
               FilledButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                 },
-                child: const Text('مغادرة'),
+                child: Text(context.helperL10n.leave),
               ),
             ],
           ),

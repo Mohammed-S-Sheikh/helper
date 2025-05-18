@@ -6,6 +6,8 @@ export 'src/data/local/local.dart';
 export 'src/data/model/model.dart';
 export 'src/data/network/network.dart';
 
+export 'src/l10n/helper_localizations.dart';
+
 export 'src/ui/consumer/consumer.dart';
 export 'src/ui/form/form.dart';
 export 'src/ui/widget/actions/actions.dart';
