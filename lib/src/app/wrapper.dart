@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:helper/src/app/language.dart';
 import 'package:helper/src/app/theme.dart';
+import 'package:helper/src/l10n/helper_localizations.dart';
 
 class HelperWrapper extends StatefulWidget {
   const HelperWrapper({
@@ -107,8 +108,14 @@ class _HelperWrapperState extends State<HelperWrapper> {
       darkTheme: widget.darkTheme,
       themeMode: _helperTheme.mode,
       locale: HelperLanguage().locale,
-      localizationsDelegates: _localizationsDelegates,
-      supportedLocales: widget.supportedLocales,
+      localizationsDelegates: [
+        ...HelperLocalizations.localizationsDelegates,
+        ..._localizationsDelegates,
+      ],
+      supportedLocales: [
+        ...HelperLocalizations.supportedLocales,
+        ...widget.supportedLocales,
+      ],
       builder: builder,
     );
   }
