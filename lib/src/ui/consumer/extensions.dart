@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helper/src/data/model/model.dart';
+import 'package:helper/src/logic/data/model/model.dart';
 
 extension AsyncSnapshotX<DataT> on AsyncSnapshot<DataT> {
   ResultT map<ResultT>({

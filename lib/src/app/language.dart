@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helper/src/data/local/local.dart';
+import 'package:helper/src/logic/data/local/local.dart';
 import 'package:intl/intl.dart';
 
 class HelperLanguage extends ChangeNotifier {

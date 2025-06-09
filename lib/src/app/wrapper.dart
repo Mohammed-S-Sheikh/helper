@@ -4,8 +4,8 @@ import 'package:helper/src/app/language.dart';
 import 'package:helper/src/app/theme.dart';
 import 'package:helper/src/l10n/helper_localizations.dart';
 
-class HelperWrapper extends StatefulWidget {
-  const HelperWrapper({
+class HelperApp extends StatefulWidget {
+  const HelperApp({
     super.key,
     this.theme,
     this.darkTheme,
@@ -18,7 +18,7 @@ class HelperWrapper extends StatefulWidget {
   })  : routerConfig = null,
         routerDelegate = null;
 
-  const HelperWrapper.router({
+  const HelperApp.router({
     super.key,
     this.routerConfig,
     this.routerDelegate,
@@ -40,10 +40,10 @@ class HelperWrapper extends StatefulWidget {
   final Widget? home;
 
   @override
-  State<HelperWrapper> createState() => _HelperWrapperState();
+  State<HelperApp> createState() => _HelperAppState();
 }
 
-class _HelperWrapperState extends State<HelperWrapper> {
+class _HelperAppState extends State<HelperApp> {
   final HelperLanguage _helperLanguage = HelperLanguage();
   final HelperTheme _helperTheme = HelperTheme();
 

@@ -95,6 +95,24 @@ abstract class HelperLocalizations {
     Locale('en')
   ];
 
+  /// No description provided for @authError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ في المصادقة'**
+  String get authError;
+
+  /// No description provided for @badRequest.
+  ///
+  /// In ar, this message translates to:
+  /// **'الطلب يحتوي بيانات غير صحيحة'**
+  String get badRequest;
+
+  /// No description provided for @balanceOrCreditLimitExceeded.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تجاوز الرصيد او الحد الأقصى للديون'**
+  String get balanceOrCreditLimitExceeded;
+
   /// No description provided for @cancel.
   ///
   /// In ar, this message translates to:
@@ -106,6 +124,24 @@ abstract class HelperLocalizations {
   /// In ar, this message translates to:
   /// **'الوضع الداكن'**
   String get darkTheme;
+
+  /// No description provided for @dismiss.
+  ///
+  /// In ar, this message translates to:
+  /// **'تجاهل'**
+  String get dismiss;
+
+  /// No description provided for @forbidden.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب غير مصرح به'**
+  String get forbidden;
+
+  /// No description provided for @internalError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ داخلي'**
+  String get internalError;
 
   /// No description provided for @leave.
   ///
@@ -119,11 +155,47 @@ abstract class HelperLocalizations {
   /// **'الوضع الفاتح'**
   String get lightTheme;
 
+  /// No description provided for @networkError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ في الشبكة'**
+  String get networkError;
+
   /// No description provided for @noResults.
   ///
   /// In ar, this message translates to:
   /// **'لا توجد نتائج'**
   String get noResults;
+
+  /// No description provided for @notFound.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير موجود'**
+  String get notFound;
+
+  /// No description provided for @paymentError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ في الدفع'**
+  String get paymentError;
+
+  /// No description provided for @retry.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة المحاولة'**
+  String get retry;
+
+  /// No description provided for @serverError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ في الخادم'**
+  String get serverError;
+
+  /// No description provided for @serviceUnavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخدمة غير متاحة'**
+  String get serviceUnavailable;
 
   /// No description provided for @systemTheme.
   ///
@@ -137,6 +209,24 @@ abstract class HelperLocalizations {
   /// **'الوضع'**
   String get theme;
 
+  /// No description provided for @tooManyRequests.
+  ///
+  /// In ar, this message translates to:
+  /// **'أقصى عدد من الطلبات'**
+  String get tooManyRequests;
+
+  /// No description provided for @unauthorized.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مخوّل'**
+  String get unauthorized;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ غير متوقع'**
+  String get unexpectedError;
+
   /// No description provided for @unsavedChanges.
   ///
   /// In ar, this message translates to:
@@ -148,6 +238,12 @@ abstract class HelperLocalizations {
   /// In ar, this message translates to:
   /// **'توجد لديك تغييرات غير محفوظة، هل تريد مغادرة هذه الصفحة؟'**
   String get unsavedChangesWarning;
+
+  /// No description provided for @validationError.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ في التحقق'**
+  String get validationError;
 }
 
 class _HelperLocalizationsDelegate extends LocalizationsDelegate<HelperLocalizations> {
