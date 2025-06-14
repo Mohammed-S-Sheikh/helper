@@ -48,10 +48,22 @@ class HelperLocalizationsEn extends HelperLocalizations {
   String get notFound => 'Not found';
 
   @override
+  String get otp => 'OTP';
+
+  @override
+  String get otpSentToPhoneNumber => 'OTP has been sent to the phone number';
+
+  @override
   String get paymentError => 'Payment Error';
 
   @override
+  String get resend => 'Resend';
+
+  @override
   String get retry => 'Retry';
+
+  @override
+  String get send => 'Send';
 
   @override
   String get serverError => 'Server Error';
@@ -69,6 +81,9 @@ class HelperLocalizationsEn extends HelperLocalizations {
   String get tooManyRequests => 'Too many requests';
 
   @override
+  String get transfer => 'Transfer';
+
+  @override
   String get unauthorized => 'Unauthorized';
 
   @override
@@ -82,4 +97,13 @@ class HelperLocalizationsEn extends HelperLocalizations {
 
   @override
   String get validationError => 'Validation Error';
+
+  @override
+  String get verify => 'Verify';
+
+  @override
+  String get youCanNowResendOtp => 'You can now resend the OTP.';
+
+  @override
+  String get youCanResendAfter => 'You can resend the OTP after';
 }

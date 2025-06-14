@@ -48,10 +48,22 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get notFound => 'غير موجود';
 
   @override
+  String get otp => 'رمز التحقق';
+
+  @override
+  String get otpSentToPhoneNumber => 'تم إرسال رمز التحقق إلى الهاتف';
+
+  @override
   String get paymentError => 'خطأ في الدفع';
 
   @override
+  String get resend => 'إعادة الإرسال';
+
+  @override
   String get retry => 'إعادة المحاولة';
+
+  @override
+  String get send => 'إرسال';
 
   @override
   String get serverError => 'خطأ في الخادم';
@@ -69,6 +81,9 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get tooManyRequests => 'أقصى عدد من الطلبات';
 
   @override
+  String get transfer => 'تحويل';
+
+  @override
   String get unauthorized => 'غير مخوّل';
 
   @override
@@ -82,4 +97,13 @@ class HelperLocalizationsAr extends HelperLocalizations {
 
   @override
   String get validationError => 'خطأ في التحقق';
+
+  @override
+  String get verify => 'تأكيد';
+
+  @override
+  String get youCanNowResendOtp => 'يمكنك الأن إعادة إرسال رمز التحقق.';
+
+  @override
+  String get youCanResendAfter => 'يمكنك إعادة إرسال رمز التحقق بعد';
 }

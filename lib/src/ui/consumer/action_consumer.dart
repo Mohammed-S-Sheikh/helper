@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helper/src/logic/controllers/controllers.dart';
 import 'package:helper/src/logic/data/model/model.dart';
-import 'package:helper/src/logic/data/network/v3/v3.dart';
+import 'package:helper/src/logic/data/network/network.dart';
 import 'package:helper/src/ui/widget/communication/failure_feedback_behavior.dart';
 import 'package:helper/src/ui/notifiers/notifiers.dart';
 import 'package:provider/provider.dart';

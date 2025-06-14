@@ -173,17 +173,41 @@ abstract class HelperLocalizations {
   /// **'غير موجود'**
   String get notFound;
 
+  /// No description provided for @otp.
+  ///
+  /// In ar, this message translates to:
+  /// **'رمز التحقق'**
+  String get otp;
+
+  /// No description provided for @otpSentToPhoneNumber.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إرسال رمز التحقق إلى الهاتف'**
+  String get otpSentToPhoneNumber;
+
   /// No description provided for @paymentError.
   ///
   /// In ar, this message translates to:
   /// **'خطأ في الدفع'**
   String get paymentError;
 
+  /// No description provided for @resend.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة الإرسال'**
+  String get resend;
+
   /// No description provided for @retry.
   ///
   /// In ar, this message translates to:
   /// **'إعادة المحاولة'**
   String get retry;
+
+  /// No description provided for @send.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرسال'**
+  String get send;
 
   /// No description provided for @serverError.
   ///
@@ -215,6 +239,12 @@ abstract class HelperLocalizations {
   /// **'أقصى عدد من الطلبات'**
   String get tooManyRequests;
 
+  /// No description provided for @transfer.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحويل'**
+  String get transfer;
+
   /// No description provided for @unauthorized.
   ///
   /// In ar, this message translates to:
@@ -244,6 +274,24 @@ abstract class HelperLocalizations {
   /// In ar, this message translates to:
   /// **'خطأ في التحقق'**
   String get validationError;
+
+  /// No description provided for @verify.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد'**
+  String get verify;
+
+  /// No description provided for @youCanNowResendOtp.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكنك الأن إعادة إرسال رمز التحقق.'**
+  String get youCanNowResendOtp;
+
+  /// No description provided for @youCanResendAfter.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكنك إعادة إرسال رمز التحقق بعد'**
+  String get youCanResendAfter;
 }
 
 class _HelperLocalizationsDelegate extends LocalizationsDelegate<HelperLocalizations> {

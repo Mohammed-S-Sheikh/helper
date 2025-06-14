@@ -14,6 +14,7 @@ export 'src/ui/consumer/consumer.dart';
 export 'src/ui/notifiers/notifiers.dart';
 export 'src/ui/widget/actions/actions.dart';
 export 'src/ui/widget/communication/communication.dart';
+export 'src/ui/widget/containment/containment.dart';
 export 'src/ui/widget/state/state.dart';
 export 'src/ui/widget/widget.dart';
 export 'src/ui/ui.dart';
