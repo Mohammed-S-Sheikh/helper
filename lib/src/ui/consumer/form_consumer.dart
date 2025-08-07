@@ -79,22 +79,27 @@ class _FormConsumerState<DataT> extends State<FormConsumer<DataT>> {
 
   @override
   Widget build(BuildContext context) {
-    return _FormControllerProvider(
-      controller: _controller,
-      child: Builder(
-        builder: (context) {
-          _FormControllerProvider.of(context);
-          return FormBuilder(
-            key: _formKey,
-            enabled: !_controller.isLoading,
-            canPop: !widget.alertUnsavedChanges,
-            onPopInvokedWithResult: _onPopInvokedWithResult,
-            child: Column(
-              spacing: widget.spacing,
-              children: widget.children(context, _controller),
-            ),
-          );
-        },
+    return ConditionalWrapper(
+      condition: widget.padding != null,
+      wrapper: (child) => Padding(padding: widget.padding!, child: child),
+      child: _FormControllerProvider(
+        controller: _controller,
+        child: Builder(
+          builder: (context) {
+            _FormControllerProvider.of(context);
+            return FormBuilder(
+              key: _formKey,
+              enabled: !_controller.isLoading,
+              canPop: !widget.alertUnsavedChanges,
+              onPopInvokedWithResult: _onPopInvokedWithResult,
+              child: Column(
+                spacing: widget.spacing,
+                mainAxisSize: MainAxisSize.min,
+                children: widget.children(context, _controller),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
