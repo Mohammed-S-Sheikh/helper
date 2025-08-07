@@ -4,6 +4,7 @@
     "badRequest": "Request contains invalid data",
     "balanceOrCreditLimitExceeded": "Balance or credit limit exceeded",
     "cancel": "Cancel",
+    "confirm": "Confirm",
     "darkTheme": "Dark Theme",
     "dismiss": "Dismiss",
     "forbidden": "Forbidden request",

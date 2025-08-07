@@ -119,6 +119,12 @@ abstract class HelperLocalizations {
   /// **'إلغاء'**
   String get cancel;
 
+  /// No description provided for @confirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'تأكيد'**
+  String get confirm;
+
   /// No description provided for @darkTheme.
   ///
   /// In ar, this message translates to:

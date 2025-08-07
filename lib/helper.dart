@@ -1,5 +1,7 @@
 library;
 
+export 'package:flutter_form_builder/flutter_form_builder.dart';
+
 export 'src/app/app.dart';
 
 export 'src/l10n/helper_localizations.dart';

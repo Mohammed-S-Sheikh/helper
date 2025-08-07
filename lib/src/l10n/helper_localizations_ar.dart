@@ -21,6 +21,9 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get cancel => 'إلغاء';
 
   @override
+  String get confirm => 'تأكيد';
+
+  @override
   String get darkTheme => 'الوضع الداكن';
 
   @override

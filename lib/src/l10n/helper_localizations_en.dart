@@ -21,6 +21,9 @@ class HelperLocalizationsEn extends HelperLocalizations {
   String get cancel => 'Cancel';
 
   @override
+  String get confirm => 'Confirm';
+
+  @override
   String get darkTheme => 'Dark Theme';
 
   @override

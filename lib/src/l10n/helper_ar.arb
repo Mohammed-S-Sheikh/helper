@@ -4,6 +4,7 @@
     "badRequest": "الطلب يحتوي بيانات غير صحيحة",
     "balanceOrCreditLimitExceeded": "تم تجاوز الرصيد او الحد الأقصى للديون",
     "cancel": "إلغاء",
+    "confirm": "تأكيد",
     "darkTheme": "الوضع الداكن",
     "dismiss": "تجاهل",
     "forbidden": "طلب غير مصرح به",
