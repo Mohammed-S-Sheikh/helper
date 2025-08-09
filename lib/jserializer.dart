@@ -7,7 +7,26 @@
 // **************************************************************************
 
 import 'package:jserializer/jserializer.dart' as js;
-import 'package:helper/src/logic/data/model/feedback/feedback_model.dart';
+import 'package:helper/src/logic/data/model/message.dart';
+import 'package:helper/helper.dart';
+
+class MessageModelSerializer extends js.ModelSerializer<MessageModel> {
+  const MessageModelSerializer({super.jSerializer});
+
+  static const jsonKeys = {'message'};
+
+  @override
+  MessageModel fromJson(json) {
+    final message$Value = safeLookup<String>(
+      call: () => jSerializer.fromJson<String>(json['message']),
+      jsonKey: 'message',
+    );
+    return MessageModel(message: message$Value);
+  }
+
+  @override
+  Map<String, dynamic> toJson(MessageModel model) => {'message': model.message};
+}
 
 class FeedbackModelSerializer extends js.ModelSerializer<FeedbackModel> {
   const FeedbackModelSerializer({super.jSerializer});
@@ -262,6 +281,22 @@ class FeedbackNavActionBehaviorSerializer
   }
 }
 
+class MessageModelMocker extends js.JModelMocker<MessageModel> {
+  const MessageModelMocker({super.jSerializer});
+
+  @override
+  MessageModel createMock([js.JMockerContext? context]) {
+    final prevLevel = context?.currentDepthLevel ?? 0;
+    final currentLevel = prevLevel + 1;
+    final message$Value = subMock<String>(
+      context: context,
+      fieldName: 'message',
+      currentLevel: currentLevel,
+    );
+    return MessageModel(message: message$Value);
+  }
+}
+
 class FeedbackModelMocker extends js.JModelMocker<FeedbackModel> {
   const FeedbackModelMocker({super.jSerializer});
 
@@ -399,6 +434,11 @@ class FeedbackNavActionBehaviorMocker
 
 void initializeJSerializer({js.JSerializerInterface? jSerializer}) {
   final instance = jSerializer ?? js.JSerializer.i;
+  instance.register<MessageModel>(
+    (s) => MessageModelSerializer(jSerializer: s),
+    (Function f) => f<MessageModel>(),
+    mockFactory: (s) => MessageModelMocker(jSerializer: s),
+  );
   instance.register<FeedbackModel>(
     (s) => FeedbackModelSerializer(jSerializer: s),
     (Function f) => f<FeedbackModel>(),
