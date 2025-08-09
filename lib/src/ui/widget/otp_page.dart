@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:helper/src/logic/controllers/controllers.dart';
 import 'package:helper/src/logic/data/network/network.dart';
 import 'package:helper/src/ui/consumer/consumer.dart';
@@ -49,6 +50,7 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   Widget build(BuildContext context) {
+    FormBuilderValidators;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -80,9 +82,12 @@ class _OtpPageState extends State<OtpPage> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                Pinput(
-                  length: _otpLength,
-                  controller: _pinputController,
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Pinput(
+                    length: _otpLength,
+                    controller: _pinputController,
+                  ),
                 ),
                 const SizedBox(height: 12),
                 const Divider(),
