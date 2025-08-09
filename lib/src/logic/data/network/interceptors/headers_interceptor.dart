@@ -14,6 +14,9 @@ class HeadersInterceptor extends Interceptor {
     final languageCode = HelperPrefs.i.getString('languageCode') ?? 'ar';
     options.headers['Accept-Language'] = Locale(languageCode).languageCode;
 
+    options.headers['Content-Type'] = 'application/json';
+    options.headers['Accept'] = 'application/json';
+
     super.onRequest(options, handler);
   }
 }
