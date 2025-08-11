@@ -95,6 +95,7 @@ class _OtpPageState extends State<OtpPage> {
                 if (_canResend)
                   ActionConsumer<void>(
                     endpoint: widget.resendOtpEndpoint,
+                    onSuccess: (controller, data) => _startTimer(),
                     builder: (context, controller) {
                       final onTap = controller.isLoading
                           ? null
