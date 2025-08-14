@@ -28,6 +28,8 @@ class HelperBottomSheet extends StatelessWidget {
   static Future<T?> show<T>(
     BuildContext context, {
     bool? showScrollBar,
+    bool isScrollControlled = false,
+    Color? backgroundColor,
     EdgeInsetsGeometry? headerPadding,
     Widget? leading,
     required Widget title,
@@ -40,6 +42,8 @@ class HelperBottomSheet extends StatelessWidget {
       showModalBottomSheet(
         context: context,
         enableDrag: true,
+        backgroundColor: backgroundColor,
+        isScrollControlled: isScrollControlled,
         showDragHandle: true,
         builder: (context) => HelperBottomSheet(
           showScrollBar: showScrollBar,
