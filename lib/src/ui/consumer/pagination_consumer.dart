@@ -157,7 +157,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
       );
     }
 
-    if (widget.enableRefresh) {
+    if (widget.expanded) {
       child = Expanded(child: child);
     }
 
