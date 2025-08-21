@@ -96,7 +96,8 @@ class HelperLocalizationsEn extends HelperLocalizations {
   String get unsavedChanges => 'Unsaved Changes';
 
   @override
-  String get unsavedChangesWarning => 'You have unsaved changes. Do you want to leave this page?';
+  String get unsavedChangesWarning =>
+      'You have unsaved changes. Do you want to leave this page?';
 
   @override
   String get validationError => 'Validation Error';
