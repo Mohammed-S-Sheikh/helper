@@ -15,15 +15,23 @@ const int _otpLength = 6;
 class OtpPage extends StatefulWidget {
   const OtpPage({
     required this.phone,
+    this.phoneKey = 'phone',
+    this.otpKey = 'otp',
     required this.verifyOtpEndpoint,
+    this.verifyOtpEndpointExtra,
     required this.resendOtpEndpoint,
+    this.resendOtpEndpointExtra,
     required this.onSuccess,
     super.key,
   });
 
   final String phone;
+  final String phoneKey;
+  final String otpKey;
   final Endpoint verifyOtpEndpoint;
+  final Json? verifyOtpEndpointExtra;
   final Endpoint resendOtpEndpoint;
+  final Json? resendOtpEndpointExtra;
   final ControllerOnData<ActionController<void>, void> onSuccess;
 
   @override
@@ -99,8 +107,12 @@ class _OtpPageState extends State<OtpPage> {
                     builder: (context, controller) {
                       final onTap = controller.isLoading
                           ? null
-                          : () =>
-                              controller.request(body: {'phone': widget.phone});
+                          : () => controller.request(
+                                body: {
+                                  widget.phoneKey: widget.phone,
+                                  ...?widget.resendOtpEndpointExtra,
+                                },
+                              );
 
                       return Text.rich(
                         TextSpan(
@@ -144,8 +156,12 @@ class _OtpPageState extends State<OtpPage> {
                     isLoading: controller.isLoading,
                     onPressed: !_hasEnteredPinput || controller.isLoading
                         ? null
-                        : () => controller
-                            .request(body: {'otp': _pinputController.text}),
+                        : () => controller.request(
+                              body: {
+                                widget.otpKey: _pinputController.text,
+                                ...?widget.verifyOtpEndpointExtra,
+                              },
+                            ),
                     text: context.helperL10n.verify,
                   ),
                 ),

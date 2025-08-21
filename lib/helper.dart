@@ -2,6 +2,7 @@ library;
 
 export 'package:flutter_form_builder/flutter_form_builder.dart';
 export 'package:form_builder_validators/form_builder_validators.dart';
+export 'package:jserializer/jserializer.dart';
 
 export 'src/app/app.dart';
 
