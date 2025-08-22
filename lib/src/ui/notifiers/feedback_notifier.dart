@@ -43,7 +43,9 @@ class FeedbackNotifier extends ChangeNotifier {
   }
 
   void stopListening() {
-    removeListener(_listener!);
-    _listener = null;
+    if (_listener != null) {
+      removeListener(_listener!);
+      _listener = null;
+    }
   }
 }

@@ -86,6 +86,18 @@ class _HelperAppState extends State<HelperApp> {
       );
     }
 
+    final localizationsDelegates = [
+      ...HelperLocalizations.localizationsDelegates,
+      ..._localizationsDelegates,
+    ];
+
+    final supportedLocales = [
+      ...HelperLocalizations.supportedLocales.where((l) => widget
+          .supportedLocales
+          .any((wl) => wl.languageCode == l.languageCode)),
+      ...widget.supportedLocales,
+    ];
+
     if (widget.home != null) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -93,8 +105,8 @@ class _HelperAppState extends State<HelperApp> {
         darkTheme: widget.darkTheme,
         themeMode: _helperTheme.mode,
         locale: HelperLanguage().locale,
-        localizationsDelegates: _localizationsDelegates,
-        supportedLocales: widget.supportedLocales,
+        localizationsDelegates: localizationsDelegates,
+        supportedLocales: supportedLocales,
         home: widget.home,
         builder: builder,
       );
@@ -108,14 +120,8 @@ class _HelperAppState extends State<HelperApp> {
       darkTheme: widget.darkTheme,
       themeMode: _helperTheme.mode,
       locale: HelperLanguage().locale,
-      localizationsDelegates: [
-        ...HelperLocalizations.localizationsDelegates,
-        ..._localizationsDelegates,
-      ],
-      supportedLocales: [
-        ...HelperLocalizations.supportedLocales,
-        ...widget.supportedLocales,
-      ],
+      localizationsDelegates: localizationsDelegates,
+      supportedLocales: supportedLocales,
       builder: builder,
     );
   }
