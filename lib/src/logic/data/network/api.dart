@@ -47,13 +47,13 @@ class Api {
   }
 
   static Future<Result<T>> _post<T>(String url, {dynamic data}) async {
-    final requestData = data != null ? JSerializer.toJson(data) : null;
-    return _request<T>(() => _dio.post(_getUrl(url), data: requestData));
+    // final requestData = data != null ? JSerializer.toJson(data) : null;
+    return _request<T>(() => _dio.post(_getUrl(url), data: data));
   }
 
   static Future<Result<T>> _put<T>(String url, {dynamic data}) async {
-    final requestData = data != null ? JSerializer.toJson(data) : null;
-    return _request<T>(() => _dio.put(_getUrl(url), data: requestData));
+    // final requestData = data != null ? JSerializer.toJson(data) : null;
+    return _request<T>(() => _dio.put(_getUrl(url), data: data));
   }
 
   static Future<Result<T>> _delete<T>(String url, {dynamic data}) async {
