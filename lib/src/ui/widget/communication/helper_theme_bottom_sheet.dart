@@ -23,6 +23,7 @@ extension ThemeDataX on ThemeData {
       bodyPadding: const EdgeInsets.symmetric(horizontal: 8),
       body: SingleChildScrollView(
         child: Column(
+          spacing: 8,
           children: [
             for (final mode in ThemeMode.values)
               Card.filled(
