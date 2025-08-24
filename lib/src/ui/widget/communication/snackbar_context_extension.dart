@@ -5,6 +5,7 @@ extension SnackbarContextExtension on BuildContext {
 
   void showSnackBar(
     String message, {
+    Duration? displayDuration,
     SnackBarAction? action,
     SnackBarBehaviour behaviour = SnackBarBehaviour.wait,
   }) {
@@ -16,7 +17,19 @@ extension SnackbarContextExtension on BuildContext {
       ScaffoldMessenger.of(this).removeCurrentSnackBar();
     }
 
-    final snackBar = SnackBar(content: Text(message), action: action);
+    late final SnackBar snackBar;
+    if (displayDuration == null) {
+      snackBar = SnackBar(
+        content: Text(message),
+        action: action,
+      );
+    } else {
+      snackBar = SnackBar(
+        content: Text(message),
+        action: action,
+        duration: displayDuration,
+      );
+    }
     final controller = ScaffoldMessenger.of(this).showSnackBar(snackBar);
     _hasActiveSnackBar = true;
 
