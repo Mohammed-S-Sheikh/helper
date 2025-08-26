@@ -32,13 +32,14 @@ class Api {
     final method = endpoint.method;
     late final body = endpoint.body;
     late final queryParameters = endpoint.queryParameters;
+    late final callback = endpoint.callback!;
 
     return await switch (method) {
-      'GET' => _get<DataT>(uri, params: queryParameters),
-      'POST' => _post<DataT>(uri, data: body),
-      'PUT' => _put<DataT>(uri, data: body),
-      'DELETE' => _delete<DataT>(uri, data: body),
-      String() => throw UnimplementedError(),
+      EndpointMethod.get => _get<DataT>(uri, params: queryParameters),
+      EndpointMethod.post => _post<DataT>(uri, data: body),
+      EndpointMethod.put => _put<DataT>(uri, data: body),
+      EndpointMethod.delete => _delete<DataT>(uri, data: body),
+      EndpointMethod.callback => _request<DataT>(callback),
     };
   }
 
@@ -62,9 +63,7 @@ class Api {
 
   static String _getUrl(String url) => url.replaceAll(RegExp('//+'), '/');
 
-  static Future<Result<T>> _request<T>(
-    Future<Response<dynamic>> Function() requestFunction,
-  ) async {
+  static Future<Result<T>> _request<T>(EndpointCallback requestFunction) async {
     try {
       final response = await requestFunction();
       final responseData = response.data as Json;
