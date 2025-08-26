@@ -4,7 +4,10 @@ extension on Failure {
   Widget get image {
     return switch (this) {
       // TODO(Saaher): Handle cases.
-      Failure() => Icon(Icons.cancel_outlined),
+      Failure() => const Icon(
+          Icons.bug_report_outlined,
+          size: 100,
+        ),
     };
   }
 }

@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart' show Response;
+import 'package:dio/dio.dart' show Dio, Response;
 import 'package:helper/src/logic/data/network/types.dart';
 
-typedef EndpointCallback = Future<Response<dynamic>> Function();
+typedef EndpointCallback = Future<Response<dynamic>> Function(Dio dio);
 
 enum EndpointMethod {
   callback,

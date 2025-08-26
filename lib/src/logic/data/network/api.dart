@@ -39,7 +39,7 @@ class Api {
       EndpointMethod.post => _post<DataT>(uri, data: body),
       EndpointMethod.put => _put<DataT>(uri, data: body),
       EndpointMethod.delete => _delete<DataT>(uri, data: body),
-      EndpointMethod.callback => _request<DataT>(callback),
+      EndpointMethod.callback => _request<DataT>(() => callback(_dio)),
     };
   }
 
@@ -63,9 +63,11 @@ class Api {
 
   static String _getUrl(String url) => url.replaceAll(RegExp('//+'), '/');
 
-  static Future<Result<T>> _request<T>(EndpointCallback requestFunction) async {
+  static Future<Result<T>> _request<T>(
+    Future<Response<dynamic>> Function() callback,
+  ) async {
     try {
-      final response = await requestFunction();
+      final response = await callback();
       final responseData = response.data as Json;
       final jsonData = responseData['data'];
       final data = JSerializer.fromJson<T>(jsonData);
