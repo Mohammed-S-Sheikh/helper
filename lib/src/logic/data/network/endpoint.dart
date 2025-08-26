@@ -17,9 +17,14 @@ class Endpoint {
   final Json? body;
   final Json? queryParameters;
   final EndpointCallback? callback;
+  final String dataKey;
+  final String metaKey;
 
-  const Endpoint.callback(this.callback)
-      : method = EndpointMethod.callback,
+  const Endpoint.callback(
+    this.callback, {
+    this.dataKey = 'data',
+    this.metaKey = 'meta',
+  })  : method = EndpointMethod.callback,
         uri = '',
         body = null,
         queryParameters = null;
@@ -27,6 +32,8 @@ class Endpoint {
   const Endpoint.get(
     this.uri, {
     this.queryParameters,
+    this.dataKey = 'data',
+    this.metaKey = 'meta',
   })  : method = EndpointMethod.get,
         body = null,
         callback = null;
@@ -34,6 +41,8 @@ class Endpoint {
   const Endpoint.post(
     this.uri, {
     this.body,
+    this.dataKey = 'data',
+    this.metaKey = 'meta',
   })  : method = EndpointMethod.post,
         queryParameters = null,
         callback = null;
@@ -41,6 +50,8 @@ class Endpoint {
   const Endpoint.put(
     this.uri, {
     this.body,
+    this.dataKey = 'data',
+    this.metaKey = 'meta',
   })  : method = EndpointMethod.put,
         queryParameters = null,
         callback = null;
@@ -48,6 +59,8 @@ class Endpoint {
   const Endpoint.delete(
     this.uri, {
     this.body,
+    this.dataKey = 'data',
+    this.metaKey = 'meta',
   })  : method = EndpointMethod.delete,
         queryParameters = null,
         callback = null;
@@ -58,6 +71,8 @@ class Endpoint {
     this.body,
     this.queryParameters,
     this.callback,
+    this.dataKey = 'data',
+    this.metaKey = 'meta',
   });
 
   Endpoint copyWithPage(int page) => Endpoint.get(
@@ -71,6 +86,8 @@ class Endpoint {
     Json? body,
     Json? queryParameters,
     EndpointCallback? callback,
+    String? dataKey,
+    String? metaKey,
   }) =>
       Endpoint._(
         uri ?? this.uri,
@@ -78,5 +95,7 @@ class Endpoint {
         body: body ?? this.body,
         queryParameters: queryParameters ?? this.queryParameters,
         callback: callback ?? this.callback,
+        dataKey: dataKey ?? this.dataKey,
+        metaKey: metaKey ?? this.metaKey,
       );
 }
