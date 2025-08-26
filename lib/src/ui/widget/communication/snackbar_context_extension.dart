@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 
+enum SnackBarFeedback {
+  normal,
+  success,
+  failure;
+
+  String _formatMessage(String value) {
+    return switch (this) {
+      SnackBarFeedback.normal => value,
+      SnackBarFeedback.success => '$value ✅',
+      SnackBarFeedback.failure => '$value ❌',
+    };
+  }
+}
+
 extension SnackbarContextExtension on BuildContext {
   static bool _hasActiveSnackBar = false;
 
@@ -7,6 +21,7 @@ extension SnackbarContextExtension on BuildContext {
     String message, {
     Duration? displayDuration,
     SnackBarAction? action,
+    SnackBarFeedback feedback = SnackBarFeedback.normal,
     SnackBarBehaviour behaviour = SnackBarBehaviour.wait,
   }) {
     if (behaviour._isIgnore && _hasActiveSnackBar) {
@@ -20,12 +35,12 @@ extension SnackbarContextExtension on BuildContext {
     late final SnackBar snackBar;
     if (displayDuration == null) {
       snackBar = SnackBar(
-        content: Text(message),
+        content: Text(feedback._formatMessage(message)),
         action: action,
       );
     } else {
       snackBar = SnackBar(
-        content: Text(message),
+        content: Text(feedback._formatMessage(message)),
         action: action,
         duration: displayDuration,
       );
