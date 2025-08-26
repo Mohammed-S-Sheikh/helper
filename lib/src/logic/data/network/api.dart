@@ -138,7 +138,7 @@ class Api {
       final jsonData = responseData[dataKey];
 
       late final T data;
-      if (T is Non || T is Void) {
+      if (T == Non || T == Void) {
         data = const Non._() as T;
       } else {
         data = JSerializer.fromJson<T>(jsonData);
