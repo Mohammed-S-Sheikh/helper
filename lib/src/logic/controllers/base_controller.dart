@@ -66,17 +66,15 @@ abstract class BaseController<ControllerT, DataT> with ChangeNotifier {
           this.endpoint.copyWith(body: body, queryParameters: queryParameters);
       final result = await Api.request<DataT>(endpoint);
 
-      if (result.data != null) {
-        final data = _adaptData(result);
-        await _onData?.call(this as ControllerT, data);
-        return _setData(data);
-      }
-
       if (result.failure != null) {
         final failure = _adaptFailure(result);
+        _setFailure(failure);
         await _onFailure?.call(this as ControllerT, failure);
-        return _setFailure(failure);
       }
+
+      final data = _adaptData(result);
+      _setData(data);
+      await _onData?.call(this as ControllerT, data);
     } catch (e) {
       _setFailure(Failure.fromException(e));
     } finally {

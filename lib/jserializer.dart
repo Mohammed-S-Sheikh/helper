@@ -7,8 +7,22 @@
 // **************************************************************************
 
 import 'package:jserializer/jserializer.dart' as js;
-import 'package:helper/src/logic/data/model/message.dart';
+import 'package:helper/src/logic/data/model/non.dart';
 import 'package:helper/helper.dart';
+
+class NonSerializer extends js.ModelSerializer<Non> {
+  const NonSerializer({super.jSerializer});
+
+  static const jsonKeys = {};
+
+  @override
+  Non fromJson(json) {
+    return Non();
+  }
+
+  @override
+  Map<String, dynamic> toJson(Non model) => {};
+}
 
 class MessageModelSerializer extends js.ModelSerializer<MessageModel> {
   const MessageModelSerializer({super.jSerializer});
@@ -281,6 +295,17 @@ class FeedbackNavActionBehaviorSerializer
   }
 }
 
+class NonMocker extends js.JModelMocker<Non> {
+  const NonMocker({super.jSerializer});
+
+  @override
+  Non createMock([js.JMockerContext? context]) {
+    final prevLevel = context?.currentDepthLevel ?? 0;
+    final currentLevel = prevLevel + 1;
+    return Non();
+  }
+}
+
 class MessageModelMocker extends js.JModelMocker<MessageModel> {
   const MessageModelMocker({super.jSerializer});
 
@@ -434,6 +459,11 @@ class FeedbackNavActionBehaviorMocker
 
 void initializeJSerializer({js.JSerializerInterface? jSerializer}) {
   final instance = jSerializer ?? js.JSerializer.i;
+  instance.register<Non>(
+    (s) => NonSerializer(jSerializer: s),
+    (Function f) => f<Non>(),
+    mockFactory: (s) => NonMocker(jSerializer: s),
+  );
   instance.register<MessageModel>(
     (s) => MessageModelSerializer(jSerializer: s),
     (Function f) => f<MessageModel>(),

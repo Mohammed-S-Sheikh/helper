@@ -1,4 +1,5 @@
 import 'package:helper/src/logic/data/model/model.dart';
+import 'package:helper/src/logic/data/model/non.dart';
 import 'package:helper/src/logic/data/network/endpoint.dart';
 import 'package:helper/src/logic/data/network/interceptors/interceptors.dart';
 import 'package:dio/dio.dart';
@@ -73,7 +74,7 @@ class Api {
       final data = JSerializer.fromJson<T>(jsonData);
 
       return Result.success(
-        data,
+        data ?? const Non() as T,
         meta: responseData['meta'] as Json?,
       );
     } catch (e) {
