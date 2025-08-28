@@ -48,7 +48,7 @@ class HelperFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = FormConsumer.of(context);
 
-    final errors = controller.failure?.validation?[name] ?? [];
+    final errors = controller.getValidationErrorOf(name) ?? [];
 
     late final disabledBorder = OutlineInputBorder(
       borderSide: BorderSide(color: context.colorScheme.outlineVariant),
