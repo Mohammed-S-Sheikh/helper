@@ -9,11 +9,17 @@ class StateWidget extends StatelessWidget {
     this.title,
     this.titleText,
     this.subtitle,
+    this.subtitleText,
     this.action,
-  }) : assert(
+  })  : assert(
           (title == null && titleText == null) ||
               (title != null) ^ (titleText != null),
           'Either [title] or [titleText] must be provided',
+        ),
+        assert(
+          (subtitle == null && subtitleText == null) ||
+              (subtitle != null) ^ (subtitleText != null),
+          'Either [subtitle] or [subtitleText] must be provided',
         );
 
   final double imageSize;
@@ -21,6 +27,7 @@ class StateWidget extends StatelessWidget {
   final Widget? title;
   final String? titleText;
   final Widget? subtitle;
+  final String? subtitleText;
   final Widget? action;
 
   double get _titleScaping => subtitle != null ? 4 : 0;
@@ -29,8 +36,11 @@ class StateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final image = this.image;
-    final title = this.title ?? (titleText != null ? Text(titleText!) : null);
-    final subtitle = this.subtitle;
+    final titleText = this.titleText;
+    final title = this.title ?? (titleText != null ? Text(titleText) : null);
+    final subtitleText = this.subtitleText;
+    final subtitle =
+        this.subtitle ?? (subtitleText != null ? Text(subtitleText) : null);
     final action = this.action;
 
     final textTheme = Theme.of(context).textTheme;
@@ -75,7 +85,7 @@ class StateWidget extends StatelessWidget {
               ),
             ),
           if (action != null) ...[
-            const SizedBox(height: 24),
+            const SizedBox(height: 12),
             ConditionalWrapper(
               condition: textTheme.labelLarge != null,
               wrapper: (child) => DefaultTextStyle(
