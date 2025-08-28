@@ -70,6 +70,7 @@ abstract class BaseController<ControllerT, DataT> with ChangeNotifier {
         final failure = _adaptFailure(result);
         _setFailure(failure);
         await _onFailure?.call(this as ControllerT, failure);
+        return;
       }
 
       final data = _adaptData(result);
