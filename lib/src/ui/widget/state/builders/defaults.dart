@@ -102,7 +102,7 @@ class _EmptyStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StateWidget(
-      image: Icon(Icons.cancel_outlined),
+      image: const Icon(Icons.description_outlined, size: 175),
       title: Text(context.helperL10n.noResults),
       action: action,
     );

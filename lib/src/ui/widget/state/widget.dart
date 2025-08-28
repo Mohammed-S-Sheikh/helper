@@ -24,7 +24,7 @@ class StateWidget extends StatelessWidget {
   final Widget? action;
 
   double get _titleScaping => subtitle != null ? 4 : 0;
-  double get _imageScaping => subtitle != null ? 24 : 12;
+  double get _imageScaping => 12;
 
   @override
   Widget build(BuildContext context) {
