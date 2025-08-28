@@ -6,12 +6,10 @@ class PasswordField extends StatefulWidget {
     super.key,
     required this.name,
     required this.label,
-    required this.errors,
   });
 
   final String name;
   final String label;
-  final List<String>? errors;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
