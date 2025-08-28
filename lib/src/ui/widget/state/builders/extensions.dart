@@ -5,7 +5,7 @@ extension on Failure {
     return switch (this) {
       // TODO(Saaher): Handle cases.
       Failure() => const Icon(
-          Icons.bug_report_rounded,
+          Icons.bug_report_outlined,
           size: 175,
         ),
     };

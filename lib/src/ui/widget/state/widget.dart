@@ -28,9 +28,8 @@ class StateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool;
     final image = this.image;
-    final title = this.title;
+    final title = this.title ?? (titleText != null ? Text(titleText!) : null);
     final subtitle = this.subtitle;
     final action = this.action;
 

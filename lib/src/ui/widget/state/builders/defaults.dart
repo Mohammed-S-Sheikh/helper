@@ -103,7 +103,7 @@ class _EmptyStateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateWidget(
       image: const Icon(Icons.description_outlined, size: 175),
-      title: Text(context.helperL10n.noResults),
+      titleText: context.helperL10n.noResults,
       action: action,
     );
   }
@@ -119,7 +119,7 @@ class _FailureWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateWidget(
       image: failure.image,
-      title: Text(failure.message(context)),
+      titleText: failure.message(context),
       action: action,
     );
   }
