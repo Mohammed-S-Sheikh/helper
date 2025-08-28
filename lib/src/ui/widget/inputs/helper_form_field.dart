@@ -8,6 +8,7 @@ class HelperFormField extends StatelessWidget {
   const HelperFormField({
     super.key,
     required this.name,
+    this.initialValue,
     this.labelText,
     this.enabled = true,
     this.isRequired = true,
@@ -26,6 +27,7 @@ class HelperFormField extends StatelessWidget {
   });
 
   final String name;
+  final String? initialValue;
   final String? labelText;
   final bool enabled;
   final bool isRequired;
@@ -57,6 +59,7 @@ class HelperFormField extends StatelessWidget {
 
     return FormBuilderTextField(
       name: name,
+      initialValue: initialValue,
       enabled: enabled,
       keyboardType: keyboardType,
       maxLines: maxLines,
