@@ -5,34 +5,36 @@ import 'package:helper/src/l10n/helper_localizations.dart';
 typedef ValidationFailureType = Map<String, List<String>>;
 
 abstract interface class Failure {
-  const Failure._();
+  const Failure._([this._message]);
 
-  const factory Failure.auth() = _AuthFailure;
+  const factory Failure.auth([String? message]) = _AuthFailure;
 
-  const factory Failure.badRequest() = _BadRequestFailure;
+  const factory Failure.badRequest([String? message]) = _BadRequestFailure;
 
-  const factory Failure.conflict() = _ConflictFailure;
+  const factory Failure.conflict([String? message]) = _ConflictFailure;
 
-  const factory Failure.forbidden() = _ForbiddenFailure;
+  const factory Failure.forbidden([String? message]) = _ForbiddenFailure;
 
-  const factory Failure.internal() = _InternalFailure;
+  const factory Failure.internal([String? message]) = _InternalFailure;
 
-  const factory Failure.network() = _NetworkFailure;
+  const factory Failure.network([String? message]) = _NetworkFailure;
 
-  const factory Failure.notFound() = _NotFoundFailure;
+  const factory Failure.notFound([String? message]) = _NotFoundFailure;
 
-  const factory Failure.payment() = _PaymentRequiredFailure;
+  const factory Failure.payment([String? message]) = _PaymentRequiredFailure;
 
-  const factory Failure.server() = _ServerFailure;
+  const factory Failure.server([String? message]) = _ServerFailure;
 
-  const factory Failure.serviceUnavailable() = _ServiceUnavailableFailure;
+  const factory Failure.serviceUnavailable([String? message]) =
+      _ServiceUnavailableFailure;
 
-  const factory Failure.tooManyRequests() = _TooManyRequestsFailure;
+  const factory Failure.tooManyRequests([String? message]) =
+      _TooManyRequestsFailure;
 
-  const factory Failure.unauthorized() = _UnauthorizedFailure;
+  const factory Failure.unauthorized([String? message]) = _UnauthorizedFailure;
 
-  const factory Failure.validation(ValidationFailureType errors) =
-      _ValidationFailure;
+  const factory Failure.validation(ValidationFailureType errors,
+      [String? message]) = _ValidationFailure;
 
   ValidationFailureType? get validation {
     if (this is _ValidationFailure) {
@@ -42,7 +44,11 @@ abstract interface class Failure {
     return null;
   }
 
+  final String? _message;
+
   String message(BuildContext context) {
+    if (_message != null) return _message;
+
     final localizations = HelperLocalizations.of(context)!;
     return _getMessage(localizations);
   }
@@ -55,24 +61,28 @@ abstract interface class Failure {
     }
 
     Failure resolveBadResponse(Response response) {
-      late final errors = Map<String, List<String>>.from(
-        response.data['errors'].map(
-          (key, value) => MapEntry(key, List<String>.from(value)),
-        ),
-      );
+      late final errors = response.data['errors'] == null
+          ? null
+          : Map<String, List<String>>.from(
+              response.data['errors'].map(
+                (key, value) => MapEntry(key, List<String>.from(value)),
+              ),
+            );
+
+      final String? message = response.data['message'];
 
       return switch (response.statusCode) {
-        400 => Failure.badRequest(),
-        401 => Failure.unauthorized(),
-        402 => Failure.payment(),
-        403 => Failure.forbidden(),
-        404 => Failure.notFound(),
-        409 => Failure.conflict(),
-        422 => Failure.validation(errors),
-        429 => Failure.tooManyRequests(),
-        500 => Failure.server(),
-        503 => Failure.serviceUnavailable(),
-        _ => Failure.internal(),
+        400 => Failure.badRequest(message),
+        401 => Failure.unauthorized(message),
+        402 => Failure.payment(message),
+        403 => Failure.forbidden(message),
+        404 => Failure.notFound(message),
+        409 => Failure.conflict(message),
+        422 => Failure.validation(errors ?? {}, message),
+        429 => Failure.tooManyRequests(message),
+        500 => Failure.server(message),
+        503 => Failure.serviceUnavailable(message),
+        _ => Failure.internal(message),
       };
     }
 
@@ -83,13 +93,13 @@ abstract interface class Failure {
       DioExceptionType.connectionTimeout => Failure.network(),
       DioExceptionType.receiveTimeout => Failure.network(),
       DioExceptionType.sendTimeout => Failure.network(),
-      _ => Failure.internal(),
+      _ => Failure.internal(exception.message),
     };
   }
 }
 
 class _AuthFailure extends Failure {
-  const _AuthFailure() : super._();
+  const _AuthFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -98,7 +108,7 @@ class _AuthFailure extends Failure {
 }
 
 class _BadRequestFailure extends Failure {
-  const _BadRequestFailure() : super._();
+  const _BadRequestFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -107,7 +117,7 @@ class _BadRequestFailure extends Failure {
 }
 
 class _ConflictFailure extends Failure {
-  const _ConflictFailure() : super._();
+  const _ConflictFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -116,7 +126,7 @@ class _ConflictFailure extends Failure {
 }
 
 class _ForbiddenFailure extends Failure {
-  const _ForbiddenFailure() : super._();
+  const _ForbiddenFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -125,7 +135,7 @@ class _ForbiddenFailure extends Failure {
 }
 
 class _InternalFailure extends Failure {
-  const _InternalFailure() : super._();
+  const _InternalFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -134,7 +144,7 @@ class _InternalFailure extends Failure {
 }
 
 class _NetworkFailure extends Failure {
-  const _NetworkFailure() : super._();
+  const _NetworkFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -143,7 +153,7 @@ class _NetworkFailure extends Failure {
 }
 
 class _NotFoundFailure extends Failure {
-  const _NotFoundFailure() : super._();
+  const _NotFoundFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -152,7 +162,7 @@ class _NotFoundFailure extends Failure {
 }
 
 class _PaymentRequiredFailure extends Failure {
-  const _PaymentRequiredFailure() : super._();
+  const _PaymentRequiredFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -161,7 +171,7 @@ class _PaymentRequiredFailure extends Failure {
 }
 
 class _ServerFailure extends Failure {
-  const _ServerFailure() : super._();
+  const _ServerFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -170,7 +180,7 @@ class _ServerFailure extends Failure {
 }
 
 class _ServiceUnavailableFailure extends Failure {
-  const _ServiceUnavailableFailure() : super._();
+  const _ServiceUnavailableFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -179,7 +189,7 @@ class _ServiceUnavailableFailure extends Failure {
 }
 
 class _TooManyRequestsFailure extends Failure {
-  const _TooManyRequestsFailure() : super._();
+  const _TooManyRequestsFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -188,7 +198,7 @@ class _TooManyRequestsFailure extends Failure {
 }
 
 class _UnauthorizedFailure extends Failure {
-  const _UnauthorizedFailure() : super._();
+  const _UnauthorizedFailure([super._message]) : super._();
 
   @override
   String _getMessage(HelperLocalizations localizations) {
@@ -197,7 +207,7 @@ class _UnauthorizedFailure extends Failure {
 }
 
 class _ValidationFailure extends Failure {
-  const _ValidationFailure(this.errors) : super._();
+  const _ValidationFailure(this.errors, [super._message]) : super._();
 
   final ValidationFailureType errors;
 
