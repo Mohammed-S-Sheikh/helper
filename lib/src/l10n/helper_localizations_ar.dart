@@ -15,8 +15,7 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get badRequest => 'الطلب يحتوي بيانات غير صحيحة';
 
   @override
-  String get balanceOrCreditLimitExceeded =>
-      'تم تجاوز الرصيد او الحد الأقصى للديون';
+  String get balanceOrCreditLimitExceeded => 'تم تجاوز الرصيد او الحد الأقصى للديون';
 
   @override
   String get cancel => 'إلغاء';
@@ -79,7 +78,7 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get systemTheme => 'وضع النظام';
 
   @override
-  String get theme => 'الوضع';
+  String get theme => 'المظهر';
 
   @override
   String get tooManyRequests => 'أقصى عدد من الطلبات';
@@ -97,8 +96,7 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get unsavedChanges => 'تغييرات غير محفوظة';
 
   @override
-  String get unsavedChangesWarning =>
-      'توجد لديك تغييرات غير محفوظة، هل تريد مغادرة هذه الصفحة؟';
+  String get unsavedChangesWarning => 'توجد لديك تغييرات غير محفوظة، هل تريد مغادرة هذه الصفحة؟';
 
   @override
   String get validationError => 'خطأ في التحقق';

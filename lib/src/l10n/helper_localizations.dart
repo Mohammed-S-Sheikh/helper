@@ -62,8 +62,7 @@ import 'helper_localizations_en.dart';
 /// be consistent with the languages listed in the HelperLocalizations.supportedLocales
 /// property.
 abstract class HelperLocalizations {
-  HelperLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  HelperLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class HelperLocalizations {
     return Localizations.of<HelperLocalizations>(context, HelperLocalizations);
   }
 
-  static const LocalizationsDelegate<HelperLocalizations> delegate =
-      _HelperLocalizationsDelegate();
+  static const LocalizationsDelegate<HelperLocalizations> delegate = _HelperLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,8 +82,7 @@ abstract class HelperLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -239,7 +236,7 @@ abstract class HelperLocalizations {
   /// No description provided for @theme.
   ///
   /// In ar, this message translates to:
-  /// **'الوضع'**
+  /// **'المظهر'**
   String get theme;
 
   /// No description provided for @tooManyRequests.
@@ -303,36 +300,34 @@ abstract class HelperLocalizations {
   String get youCanResendAfter;
 }
 
-class _HelperLocalizationsDelegate
-    extends LocalizationsDelegate<HelperLocalizations> {
+class _HelperLocalizationsDelegate extends LocalizationsDelegate<HelperLocalizations> {
   const _HelperLocalizationsDelegate();
 
   @override
   Future<HelperLocalizations> load(Locale locale) {
-    return SynchronousFuture<HelperLocalizations>(
-        lookupHelperLocalizations(locale));
+    return SynchronousFuture<HelperLocalizations>(lookupHelperLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_HelperLocalizationsDelegate old) => false;
 }
 
 HelperLocalizations lookupHelperLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return HelperLocalizationsAr();
-    case 'en':
-      return HelperLocalizationsEn();
+    case 'ar': return HelperLocalizationsAr();
+    case 'en': return HelperLocalizationsEn();
   }
 
   throw FlutterError(
-      'HelperLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'HelperLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }
