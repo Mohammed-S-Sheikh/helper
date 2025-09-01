@@ -42,8 +42,7 @@ class HelperTabBar extends StatelessWidget implements PreferredSizeWidget {
           borderRadius: BorderRadius.circular(24),
         ),
         unselectedLabelColor: unselectedlabelColor,
-        labelStyle: context.textTheme.labelLarge
-            ?.copyWith(color: labelColor ?? context.colorScheme.onPrimary),
+        labelColor: labelColor ?? context.colorScheme.onPrimary,
         tabs: [for (final tab in tabs) Tab(text: tab)],
       ),
     );
