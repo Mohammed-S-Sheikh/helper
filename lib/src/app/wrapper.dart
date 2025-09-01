@@ -51,7 +51,9 @@ class _HelperAppState extends State<HelperApp> {
   void initState() {
     super.initState();
     _helperLanguage.addListener(_resetApp);
-    _helperTheme.addListener(_resetApp);
+    _helperTheme
+      ..loadSavedTheme()
+      ..addListener(_resetApp);
   }
 
   @override
