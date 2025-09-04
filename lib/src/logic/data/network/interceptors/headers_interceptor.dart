@@ -2,8 +2,13 @@ import 'dart:ui' show Locale;
 
 import 'package:dio/dio.dart';
 import 'package:helper/src/logic/data/local/local.dart';
+import 'package:helper/src/logic/data/network/types.dart';
 
 class HeadersInterceptor extends Interceptor {
+  const HeadersInterceptor(this.extraHeaders);
+
+  final Json Function()? extraHeaders;
+
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final token = HelperPrefs.token;
@@ -16,6 +21,10 @@ class HeadersInterceptor extends Interceptor {
 
     options.headers['Content-Type'] = 'application/json';
     options.headers['Accept'] = 'application/json';
+
+    if (extraHeaders != null) {
+      options.headers.addAll(extraHeaders!());
+    }
 
     super.onRequest(options, handler);
   }

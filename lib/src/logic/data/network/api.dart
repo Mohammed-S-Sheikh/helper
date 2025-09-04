@@ -14,6 +14,7 @@ class Api {
 
   static void initialize({
     required String baseUrl,
+    Json Function()? extraHeaders,
     void Function()? on401,
   }) {
     _dio.options.baseUrl = baseUrl;
@@ -24,7 +25,7 @@ class Api {
 
     _dio.interceptors.addAll([
       FeedbackInterceptor(),
-      HeadersInterceptor(),
+      HeadersInterceptor(extraHeaders),
       if (on401 != null) UnautherizedInterceptor(on401),
     ]);
   }
