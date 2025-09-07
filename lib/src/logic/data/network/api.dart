@@ -30,123 +30,50 @@ class Api {
     ]);
   }
 
-  static Future<Result<DataT>> request<DataT>(Endpoint endpoint) async {
-    final uri = endpoint.uri;
-    final method = endpoint.method;
-    late final body = endpoint.body;
-    late final queryParameters = endpoint.queryParameters;
-    late final callback = endpoint.callback!;
-    final dataKey = endpoint.dataKey;
-    final metaKey = endpoint.metaKey;
-
-    return await switch (method) {
-      EndpointMethod.get => _get<DataT>(
-          uri,
-          params: queryParameters,
-          dataKey: dataKey,
-          metaKey: metaKey,
-        ),
-      EndpointMethod.post => _post<DataT>(
-          uri,
-          data: body,
-          dataKey: dataKey,
-          metaKey: metaKey,
-        ),
-      EndpointMethod.put => _put<DataT>(
-          uri,
-          data: body,
-          dataKey: dataKey,
-          metaKey: metaKey,
-        ),
-      EndpointMethod.delete => _delete<DataT>(
-          uri,
-          data: body,
-          dataKey: dataKey,
-          metaKey: metaKey,
-        ),
-      EndpointMethod.callback => _request<DataT>(
-          () => callback(_dio),
-          dataKey: dataKey,
-          metaKey: metaKey,
-        ),
-    };
-  }
-
-  static Future<Result<T>> _get<T>(
-    String url, {
-    Json? params,
-    required String dataKey,
-    required String metaKey,
-  }) async {
-    return _request<T>(
-      () => _dio.get(_getUrl(url), queryParameters: params),
-      dataKey: dataKey,
-      metaKey: metaKey,
-    );
-  }
-
-  static Future<Result<T>> _post<T>(
-    String url, {
-    dynamic data,
-    required String dataKey,
-    required String metaKey,
-  }) async {
-    final requestData = data != null ? JSerializer.toJson(data) : null;
-    return _request<T>(
-      () => _dio.post(_getUrl(url), data: requestData),
-      dataKey: dataKey,
-      metaKey: metaKey,
-    );
-  }
-
-  static Future<Result<T>> _put<T>(
-    String url, {
-    dynamic data,
-    required String dataKey,
-    required String metaKey,
-  }) async {
-    final requestData = data != null ? JSerializer.toJson(data) : null;
-    return _request<T>(
-      () => _dio.put(_getUrl(url), data: requestData),
-      dataKey: dataKey,
-      metaKey: metaKey,
-    );
-  }
-
-  static Future<Result<T>> _delete<T>(
-    String url, {
-    dynamic data,
-    required String dataKey,
-    required String metaKey,
-  }) async {
-    return _request<T>(
-      () => _dio.delete(_getUrl(url), data: data),
-      dataKey: dataKey,
-      metaKey: metaKey,
-    );
-  }
-
-  static String _getUrl(String url) => url.replaceAll(RegExp('//+'), '/');
-
-  static Future<Result<T>> _request<T>(
-    Future<Response<dynamic>> Function() callback, {
-    required String dataKey,
-    required String metaKey,
+  static Future<Result<DataT>> request<DataT>(
+    Endpoint endpoint, {
+    Json? body,
+    Json? queryParameters,
+    List<MultipartFile>? multipartFiles,
   }) async {
     try {
-      final response = await callback();
+      final dataKey = endpoint.dataKey ?? 'data';
+      final metaKey = endpoint.metaKey ?? 'meta';
+      late final filesKey = endpoint.filesKey ?? 'files';
+
+      final Options options = Options(
+        method: endpoint.method.name.toUpperCase(),
+      );
+
+      dynamic data = body != null ? JSerializer.toJson(body) : null;
+
+      if (multipartFiles != null) {
+        data = FormData.fromMap({
+          filesKey: multipartFiles,
+          ...?data,
+        });
+        options.contentType = 'multipart/form-data';
+      }
+
+      final url = endpoint.uri.replaceAll(RegExp('//+'), '/');
+      final response = await _dio.request(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
       final responseData = response.data as Json;
       final jsonData = responseData[dataKey];
 
-      late final T data;
-      if (T == Non || T == Void) {
-        data = const Non._() as T;
+      late final DataT resultData;
+      if (DataT == Non || DataT == Void) {
+        resultData = const Non._() as DataT;
       } else {
-        data = JSerializer.fromJson<T>(jsonData);
+        resultData = JSerializer.fromJson<DataT>(jsonData);
       }
 
       return Result.success(
-        data,
+        resultData,
         meta: responseData[metaKey] as Json?,
       );
     } catch (e) {

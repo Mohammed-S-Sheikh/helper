@@ -1,3 +1,4 @@
+export 'badge.dart';
 export 'conditional_wrapper.dart';
 export 'filled_icon.dart';
 export 'header_widget.dart';

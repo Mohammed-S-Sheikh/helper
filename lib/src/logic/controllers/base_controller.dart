@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart' show MultipartFile;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -58,13 +59,17 @@ abstract class BaseController<ControllerT, DataT> with ChangeNotifier {
   Future<void> request({
     Json? body,
     Json? queryParameters,
+    List<MultipartFile>? multipartFiles,
   }) async {
     try {
       _setLoading(true);
 
-      final endpoint =
-          this.endpoint.copyWith(body: body, queryParameters: queryParameters);
-      final result = await Api.request<DataT>(endpoint);
+      final result = await Api.request<DataT>(
+        endpoint,
+        body: body,
+        queryParameters: queryParameters,
+        multipartFiles: multipartFiles,
+      );
 
       if (result.failure != null) {
         final failure = _adaptFailure(result);

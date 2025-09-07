@@ -50,17 +50,12 @@ class _HelperAppState extends State<HelperApp> {
   @override
   void initState() {
     super.initState();
+
     _helperLanguage.addListener(_resetApp);
+
     _helperTheme
       ..loadSavedTheme()
       ..addListener(_resetApp);
-  }
-
-  @override
-  void dispose() {
-    _helperLanguage.removeListener(_resetApp);
-    _helperTheme.removeListener(_resetApp);
-    super.dispose();
   }
 
   void _resetApp() => setState(() {});
@@ -126,5 +121,12 @@ class _HelperAppState extends State<HelperApp> {
       supportedLocales: supportedLocales,
       builder: builder,
     );
+  }
+
+  @override
+  void dispose() {
+    _helperLanguage.removeListener(_resetApp);
+    _helperTheme.removeListener(_resetApp);
+    super.dispose();
   }
 }
