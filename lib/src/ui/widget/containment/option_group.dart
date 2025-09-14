@@ -18,8 +18,7 @@ class OptionGroup extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: context.colorScheme.outlineVariant,
-            width: .4,
+            color: context.colorScheme.outlineVariant.withAlpha(50),
           ),
           borderRadius: BorderRadius.circular(20),
         ),
