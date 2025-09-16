@@ -15,6 +15,7 @@ const int _otpLength = 6;
 class OtpPage extends StatefulWidget {
   const OtpPage({
     required this.phone,
+    this.sentMessage,
     this.phoneKey = 'phone',
     this.otpKey = 'otp',
     required this.verifyOtpEndpoint,
@@ -26,6 +27,7 @@ class OtpPage extends StatefulWidget {
   });
 
   final String phone;
+  final String? sentMessage;
   final String phoneKey;
   final String otpKey;
   final Endpoint verifyOtpEndpoint;
@@ -73,21 +75,24 @@ class _OtpPageState extends State<OtpPage> {
               children: [
                 Align(
                   alignment: AlignmentDirectional.topStart,
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '${context.helperL10n.otpSentToPhoneNumber} ',
-                        ),
-                        TextSpan(
-                          text: widget.phone,
-                          style: context.textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
+                  child: widget.sentMessage != null
+                      ? Text(widget.sentMessage!)
+                      : Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text:
+                                    '${context.helperL10n.otpSentToPhoneNumber} ',
+                              ),
+                              TextSpan(
+                                text: widget.phone,
+                                style: context.textTheme.bodyLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 12),
                 Directionality(
