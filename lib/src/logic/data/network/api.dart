@@ -39,7 +39,6 @@ class Api {
     try {
       final dataKey = endpoint.dataKey ?? 'data';
       final metaKey = endpoint.metaKey ?? 'meta';
-      late final filesKey = endpoint.filesKey ?? 'files';
 
       final Options options = Options(
         method: endpoint.method.name.toUpperCase(),
@@ -48,6 +47,7 @@ class Api {
       dynamic data = body != null ? JSerializer.toJson(body) : null;
 
       if (multipartFiles != null) {
+        final filesKey = endpoint.filesKey ?? 'files';
         data = FormData.fromMap({
           filesKey: multipartFiles,
           ...?data,
@@ -59,7 +59,7 @@ class Api {
       final response = await _dio.request(
         url,
         data: data,
-        queryParameters: queryParameters,
+        queryParameters: {...?queryParameters, ...?endpoint.queryParameters},
         options: options,
       );
       final responseData = response.data as Json;
