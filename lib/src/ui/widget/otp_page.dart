@@ -48,10 +48,6 @@ class _OtpPageState extends State<OtpPage> {
   final TextEditingController _pinputController = TextEditingController();
   bool get _canResend => _timeWindow == 0 && !_resendStopWatch.isActive;
 
-  bool get _hasEnteredPinput =>
-      _pinputController.text.isNotEmpty &&
-      _pinputController.text.length == _otpLength;
-
   @override
   void initState() {
     super.initState();
@@ -159,14 +155,12 @@ class _OtpPageState extends State<OtpPage> {
                   onSuccess: widget.onSuccess,
                   builder: (context, controller) => LoadingFilledButton(
                     isLoading: controller.isLoading,
-                    onPressed: !_hasEnteredPinput || controller.isLoading
-                        ? null
-                        : () => controller.request(
-                              body: {
-                                widget.otpKey: _pinputController.text,
-                                ...?widget.verifyOtpEndpointExtra,
-                              },
-                            ),
+                    onPressed: () => controller.request(
+                      body: {
+                        widget.otpKey: _pinputController.text,
+                        ...?widget.verifyOtpEndpointExtra,
+                      },
+                    ),
                     text: context.helperL10n.verify,
                   ),
                 ),
