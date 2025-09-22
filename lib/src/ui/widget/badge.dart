@@ -4,25 +4,36 @@ import 'package:helper/helper.dart';
 class HelperBadge extends StatelessWidget {
   const HelperBadge({
     super.key,
-    this.color,
+    this.content,
+    this.label,
+    this.textColor,
     this.backgroundColor,
-    required this.label,
-    this.labelStyle,
-  });
+    this.tooltip,
+  }) : assert((content != null) ^ (label != null));
 
-  final Color? color;
+  final Widget? content;
+  final String? label;
+  final Color? textColor;
+  final String? tooltip;
   final Color? backgroundColor;
-  final String label;
-  final TextStyle? labelStyle;
 
   @override
   Widget build(BuildContext context) {
-    return Badge(
+    final child = Badge(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      label: Text(label),
-      textStyle: labelStyle,
-      textColor: color ?? context.colorScheme.onTertiaryContainer,
       backgroundColor: backgroundColor ?? context.colorScheme.tertiaryContainer,
+      textColor: textColor ?? context.colorScheme.onTertiaryContainer,
+      label: label != null ? Text(label!) : content!,
     );
+
+    if (tooltip != null) {
+      return Tooltip(
+        message: tooltip,
+        triggerMode: TooltipTriggerMode.tap,
+        child: child,
+      );
+    }
+
+    return child;
   }
 }
