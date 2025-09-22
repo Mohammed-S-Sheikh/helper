@@ -39,7 +39,8 @@ class PaginationConsumer<DataT> extends StatefulWidget {
     this.stateBuilder,
     this.enableFeedback = true,
     this.onFeedback,
-    required Widget Function(BuildContext, int) this.separatorBuilder,
+    required Widget Function(BuildContext context, int index)
+        this.separatorBuilder,
   }) : gridDelegate = null;
 
   const PaginationConsumer.grid({
@@ -65,7 +66,7 @@ class PaginationConsumer<DataT> extends StatefulWidget {
   final void Function(FeedbackModel feedback)? onFeedback;
 
   final SliverGridDelegate? gridDelegate;
-  final Widget Function(BuildContext, int)? separatorBuilder;
+  final Widget Function(BuildContext context, int index)? separatorBuilder;
 
   @override
   State<PaginationConsumer<DataT>> createState() =>

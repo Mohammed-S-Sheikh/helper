@@ -7,6 +7,7 @@ class HelperTabBar extends StatelessWidget implements PreferredSizeWidget {
     required this.tabs,
     this.onTap,
     this.controller,
+    this.backgroundColor,
     this.indicatorColor,
     this.labelColor,
     this.unselectedlabelColor,
@@ -16,6 +17,7 @@ class HelperTabBar extends StatelessWidget implements PreferredSizeWidget {
   final List<String> tabs;
   final ValueChanged<int>? onTap;
   final TabController? controller;
+  final Color? backgroundColor;
   final Color? indicatorColor;
   final Color? labelColor;
   final Color? unselectedlabelColor;
@@ -27,8 +29,15 @@ class HelperTabBar extends StatelessWidget implements PreferredSizeWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: context.colorScheme.surfaceContainer,
+        color: backgroundColor ?? context.colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: context.colorScheme.onSurface.withValues(alpha: 0.08),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: TabBar(
         onTap: onTap,
