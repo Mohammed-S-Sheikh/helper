@@ -6,6 +6,7 @@ final class StateBuilderDefaults {
 
   static void overrideDefaults({
     StateBuilderType? emptyDefault,
+    StateBuilderType? failureDefault,
     StateBuilderType? authFailureDefault,
     StateBuilderType? badRequestFailureDefault,
     StateBuilderType? conflictFailureDefault,
@@ -22,6 +23,21 @@ final class StateBuilderDefaults {
   }) {
     if (emptyDefault != null) {
       i._emptyDefault = emptyDefault;
+    }
+    if (failureDefault != null) {
+      i._authFailureDefault = failureDefault;
+      i._badRequestFailureDefault = failureDefault;
+      i._conflictFailureDefault = failureDefault;
+      i._forbiddenFailureDefault = failureDefault;
+      i._internalFailureDefault = failureDefault;
+      i._networkFailureDefault = failureDefault;
+      i._notFoundFailureDefault = failureDefault;
+      i._paymentFailureDefault = failureDefault;
+      i._serverFailureDefault = failureDefault;
+      i._serviceUnavailableFailureDefault = failureDefault;
+      i._tooManyRequestsFailureDefault = failureDefault;
+      i._unauthorizedFailureDefault = failureDefault;
+      i._validationFailureDefault = failureDefault;
     }
     if (authFailureDefault != null) {
       i._authFailureDefault = authFailureDefault;
