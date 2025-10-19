@@ -9,6 +9,7 @@ import 'package:helper/src/ui/consumer/consumer.dart';
 import 'package:helper/src/ui/context_extension.dart';
 import 'package:helper/src/ui/widget/actions/actions.dart';
 import 'package:pinput/pinput.dart';
+import 'package:smart_auth/smart_auth.dart';
 
 const int _otpLength = 6;
 
@@ -52,6 +53,7 @@ class _OtpPageState extends State<OtpPage> {
   void initState() {
     super.initState();
     _startTimer();
+    _autofillSms();
   }
 
   @override
@@ -193,9 +195,22 @@ class _OtpPageState extends State<OtpPage> {
     });
   }
 
+  Future<void> _autofillSms() async {
+    final result = await SmartAuth.instance.getSmsWithRetrieverApi();
+    final code = result.data?.code;
+    if (code == null) return;
+
+    _pinputController.setText(code);
+  }
+
   @override
   void dispose() {
     _resendStopWatch.cancel();
+
+    try {
+      SmartAuth.instance.removeSmsRetrieverApiListener();
+    } catch (_) {}
+
     super.dispose();
   }
 }
