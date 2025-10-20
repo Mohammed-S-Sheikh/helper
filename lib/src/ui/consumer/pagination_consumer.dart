@@ -19,6 +19,8 @@ class PaginationConsumer<DataT> extends StatefulWidget {
   const PaginationConsumer({
     super.key,
     this.controller,
+    this.scrollController,
+    this.padding,
     this.expanded = false,
     this.enableRefresh = true,
     required this.endpoint,
@@ -32,6 +34,8 @@ class PaginationConsumer<DataT> extends StatefulWidget {
   const PaginationConsumer.separated({
     super.key,
     this.controller,
+    this.scrollController,
+    this.padding,
     this.expanded = false,
     this.enableRefresh = true,
     required this.endpoint,
@@ -46,6 +50,8 @@ class PaginationConsumer<DataT> extends StatefulWidget {
   const PaginationConsumer.grid({
     super.key,
     this.controller,
+    this.scrollController,
+    this.padding,
     this.expanded = false,
     this.enableRefresh = true,
     required this.endpoint,
@@ -57,6 +63,8 @@ class PaginationConsumer<DataT> extends StatefulWidget {
   }) : separatorBuilder = null;
 
   final PaginationController<DataT>? controller;
+  final ScrollController? scrollController;
+  final EdgeInsetsGeometry? padding;
   final bool expanded;
   final bool enableRefresh;
   final Endpoint endpoint;
@@ -122,6 +130,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
     ) builder;
     if (widget.gridDelegate != null) {
       builder = (context, state, fetchNextPage) => PagedGridView(
+            scrollController: widget.scrollController,
             state: state.copyWith(hasNextPage: _hasMore),
             fetchNextPage: fetchNextPage,
             builderDelegate: _delegate,
@@ -130,6 +139,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
     } else if (widget.separatorBuilder != null) {
       builder = (context, state, fetchNextPage) =>
           PagedListView<int, DataT>.separated(
+            scrollController: widget.scrollController,
             state: state.copyWith(hasNextPage: _hasMore),
             fetchNextPage: fetchNextPage,
             builderDelegate: _delegate,
@@ -137,6 +147,7 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
           );
     } else {
       builder = (context, state, fetchNextPage) => PagedListView<int, DataT>(
+            scrollController: widget.scrollController,
             state: state.copyWith(hasNextPage: _hasMore),
             fetchNextPage: fetchNextPage,
             builderDelegate: _delegate,
@@ -160,6 +171,13 @@ class _PaginationConsumerState<DataT> extends State<PaginationConsumer<DataT>> {
 
     if (widget.expanded) {
       child = Expanded(child: child);
+    }
+
+    if (widget.padding != null) {
+      child = Padding(
+        padding: widget.padding!,
+        child: child,
+      );
     }
 
     return child;
