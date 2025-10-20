@@ -6,10 +6,14 @@ class OptionGroup extends StatelessWidget {
     super.key,
     this.visible = true,
     required this.options,
+    this.borderColor,
+    this.backgroundColor,
   });
 
   final bool visible;
   final List<Widget> options;
+  final Color? borderColor;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +21,16 @@ class OptionGroup extends StatelessWidget {
       visible: visible,
       child: Container(
         decoration: BoxDecoration(
+          color: backgroundColor ?? context.colorScheme.surface,
           border: Border.all(
-            color: context.colorScheme.outlineVariant.withAlpha(50),
+            color:
+                borderColor ?? context.colorScheme.outlineVariant.withAlpha(50),
           ),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
           children: ListTile.divideTiles(
-            color: context.colorScheme.outlineVariant,
+            color: borderColor ?? context.colorScheme.outlineVariant,
             tiles: options,
           ).toList(),
         ),
