@@ -81,6 +81,7 @@ class HelperBottomSheet extends StatelessWidget {
 
     return SafeArea(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
             contentPadding: headerPadding,
