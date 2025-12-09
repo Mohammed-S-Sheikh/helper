@@ -6,6 +6,7 @@ import 'package:helper/src/ui/context_extension.dart';
 abstract final class HelperDialog {
   static Future<T?> action<T>(
     BuildContext context, {
+    bool barrierDismissible = true,
     Widget? icon,
     String? title,
     String? subtitle,
@@ -22,6 +23,7 @@ abstract final class HelperDialog {
     bool loading = false;
     return showDialog<T>(
       context: context,
+      barrierDismissible: barrierDismissible,
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setState) {
@@ -60,6 +62,7 @@ abstract final class HelperDialog {
 
   static Future<T?> info<T>(
     BuildContext context, {
+    bool barrierDismissible = true,
     Widget? icon,
     String? title,
     String? subtitle,
@@ -74,6 +77,7 @@ abstract final class HelperDialog {
 
     return showDialog<T>(
       context: context,
+      barrierDismissible: barrierDismissible,
       builder: (context) => AlertDialog(
         icon: icon,
         title: title == null ? null : Text(title),

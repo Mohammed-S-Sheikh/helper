@@ -5,6 +5,7 @@ import 'package:helper/src/ui/widget/communication/helper_dialog.dart';
 
 extension DialogContextExtension on BuildContext {
   Future<T?> showHelperActionDialog<T>({
+    bool barrierDismissible = true,
     Widget? icon,
     String? title,
     String? subtitle,
@@ -15,6 +16,7 @@ extension DialogContextExtension on BuildContext {
   }) {
     return HelperDialog.action<T>(
       this,
+      barrierDismissible: barrierDismissible,
       icon: icon,
       title: title,
       subtitle: subtitle,
@@ -26,6 +28,7 @@ extension DialogContextExtension on BuildContext {
   }
 
   Future<T?> showHelperInfoDialog<T>({
+    bool barrierDismissible = true,
     Widget? icon,
     String? title,
     String? subtitle,
@@ -35,6 +38,7 @@ extension DialogContextExtension on BuildContext {
   }) {
     return HelperDialog.info<T>(
       this,
+      barrierDismissible: barrierDismissible,
       icon: icon,
       title: title,
       subtitle: subtitle,
