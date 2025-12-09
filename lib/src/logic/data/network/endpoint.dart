@@ -1,6 +1,6 @@
 import 'package:helper/src/logic/data/network/types.dart';
 
-enum EndpointMethod { get, post, put, delete }
+enum EndpointMethod { get, post, put, patch, delete }
 
 class Endpoint {
   final String uri;
@@ -31,6 +31,14 @@ class Endpoint {
     this.dataKey,
     this.filesKey,
   })  : method = EndpointMethod.put,
+        metaKey = null,
+        queryParameters = null;
+
+  const Endpoint.patch(
+    this.uri, {
+    this.dataKey,
+    this.filesKey,
+  })  : method = EndpointMethod.patch,
         metaKey = null,
         queryParameters = null;
 
