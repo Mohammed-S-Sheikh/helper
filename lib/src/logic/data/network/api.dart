@@ -52,7 +52,7 @@ class Api {
         data = FormData.fromMap({
           filesKey: multipartFiles,
           if (dataWrapperKey != null) dataWrapperKey: data else ...?data,
-        });p
+        });
         options.contentType = 'multipart/form-data';
       }
 
