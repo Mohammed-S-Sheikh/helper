@@ -57,6 +57,7 @@ abstract class BaseController<ControllerT, DataT> with ChangeNotifier {
 
   @nonVirtual
   Future<void> request({
+    String? dataWrapperKey,
     Json? body,
     Json? queryParameters,
     List<MultipartFile>? multipartFiles,
@@ -66,6 +67,7 @@ abstract class BaseController<ControllerT, DataT> with ChangeNotifier {
 
       final result = await Api.request<DataT>(
         endpoint,
+        dataWrapperKey: dataWrapperKey,
         body: body,
         queryParameters: queryParameters,
         multipartFiles: multipartFiles,
