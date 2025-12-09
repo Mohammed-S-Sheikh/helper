@@ -32,6 +32,7 @@ class Api {
 
   static Future<Result<DataT>> request<DataT>(
     Endpoint endpoint, {
+    String? dataWrapperKey,
     Json? body,
     Json? queryParameters,
     List<MultipartFile>? multipartFiles,
@@ -50,7 +51,7 @@ class Api {
         final filesKey = endpoint.filesKey ?? 'files';
         data = FormData.fromMap({
           filesKey: multipartFiles,
-          ...?data,
+          if (dataWrapperKey != null) dataWrapperKey: data else ...?data,
         });
         options.contentType = 'multipart/form-data';
       }
