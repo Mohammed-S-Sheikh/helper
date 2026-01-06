@@ -3,6 +3,7 @@ import 'package:helper/src/app/language.dart';
 import 'package:helper/src/app/theme.dart';
 import 'package:helper/src/logic/data/local/prefs.dart';
 import 'package:helper/src/logic/data/network/api.dart';
+import 'package:helper/src/ui/widget/keyboard_dismisser.dart';
 
 Future<void> appRunner({
   required String baseUrl,
@@ -19,5 +20,5 @@ Future<void> appRunner({
     on401: on401,
   );
 
-  runApp(app);
+  runApp(KeyboardDismisser(child: app));
 }
