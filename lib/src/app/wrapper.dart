@@ -7,6 +7,7 @@ import 'package:helper/src/l10n/helper_localizations.dart';
 class HelperApp extends StatefulWidget {
   const HelperApp({
     super.key,
+    this.navigatorKey,
     this.theme,
     this.darkTheme,
     this.localizationsDelegates,
@@ -29,8 +30,10 @@ class HelperApp extends StatefulWidget {
       Locale('ar'),
       Locale('en', 'US'),
     ],
-  }) : home = null;
+  })  : home = null,
+        navigatorKey = null;
 
+  final GlobalKey<NavigatorState>? navigatorKey;
   final RouterConfig<Object>? routerConfig;
   final RouterDelegate<Object>? routerDelegate;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
@@ -97,6 +100,7 @@ class _HelperAppState extends State<HelperApp> {
 
     if (widget.home != null) {
       return MaterialApp(
+        navigatorKey: widget.navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: widget.theme,
         darkTheme: widget.darkTheme,
