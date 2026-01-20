@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:helper/src/logic/controllers/controllers.dart';
 import 'package:helper/src/logic/data/network/network.dart';
 import 'package:helper/src/ui/consumer/consumer.dart';
@@ -13,7 +12,7 @@ import 'package:smart_auth/smart_auth.dart';
 
 const int _otpLength = 6;
 
-class OtpPage extends StatefulWidget {
+class OtpPage<ResponseT> extends StatefulWidget {
   const OtpPage({
     required this.phone,
     this.sentMessage,
@@ -35,13 +34,13 @@ class OtpPage extends StatefulWidget {
   final Json? verifyOtpEndpointExtra;
   final Endpoint resendOtpEndpoint;
   final Json? resendOtpEndpointExtra;
-  final ControllerOnData<ActionController<void>, void> onSuccess;
+  final ControllerOnData<ActionController<ResponseT>, ResponseT> onSuccess;
 
   @override
-  State<OtpPage> createState() => _OtpPageState();
+  State<OtpPage<ResponseT>> createState() => _OtpPageState<ResponseT>();
 }
 
-class _OtpPageState extends State<OtpPage> {
+class _OtpPageState<ResponseT> extends State<OtpPage<ResponseT>> {
   late Timer _resendStopWatch;
   late String _timeLeftLabel;
   late int _timeWindow;
@@ -58,7 +57,6 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   Widget build(BuildContext context) {
-    FormBuilderValidators;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -152,7 +150,7 @@ class _OtpPageState extends State<OtpPage> {
                     ),
                   ),
                 const SizedBox(height: 12),
-                ActionConsumer(
+                ActionConsumer<ResponseT>(
                   endpoint: widget.verifyOtpEndpoint,
                   onSuccess: widget.onSuccess,
                   builder: (context, controller) => LoadingFilledButton(
