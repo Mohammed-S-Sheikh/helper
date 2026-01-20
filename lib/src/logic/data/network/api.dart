@@ -37,6 +37,7 @@ class Api {
     List<MultipartFile>? multipartFiles,
   }) async {
     try {
+      final responseWrapped = endpoint.wrapped;
       final dataKey = endpoint.dataKey ?? 'data';
       final metaKey = endpoint.metaKey ?? 'meta';
 
@@ -63,7 +64,7 @@ class Api {
         options: options,
       );
       final responseData = response.data as Json;
-      final jsonData = responseData[dataKey];
+      final jsonData = responseWrapped ? responseData[dataKey] : responseData;
 
       late final DataT resultData;
       if (DataT == Non || DataT == Void) {

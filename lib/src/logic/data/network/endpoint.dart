@@ -6,6 +6,7 @@ class Endpoint {
   final String uri;
   final EndpointMethod method;
   final Json? queryParameters;
+  final bool wrapped;
   final String? dataKey;
   final String? filesKey;
   final String? metaKey;
@@ -13,6 +14,7 @@ class Endpoint {
   const Endpoint.get(
     this.uri, {
     this.queryParameters,
+    this.wrapped = true,
     this.dataKey,
     this.metaKey,
   })  : method = EndpointMethod.get,
@@ -20,6 +22,7 @@ class Endpoint {
 
   const Endpoint.post(
     this.uri, {
+    this.wrapped = true,
     this.dataKey,
     this.filesKey,
   })  : method = EndpointMethod.post,
@@ -28,6 +31,7 @@ class Endpoint {
 
   const Endpoint.put(
     this.uri, {
+    this.wrapped = true,
     this.dataKey,
     this.filesKey,
   })  : method = EndpointMethod.put,
@@ -36,6 +40,7 @@ class Endpoint {
 
   const Endpoint.patch(
     this.uri, {
+    this.wrapped = true,
     this.dataKey,
     this.filesKey,
   })  : method = EndpointMethod.patch,
@@ -44,6 +49,7 @@ class Endpoint {
 
   const Endpoint.delete(
     this.uri, {
+    this.wrapped = true,
     this.dataKey,
   })  : method = EndpointMethod.delete,
         metaKey = null,
