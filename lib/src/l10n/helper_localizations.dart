@@ -146,6 +146,12 @@ abstract class HelperLocalizations {
   /// **'طلب غير مصرح به'**
   String get forbidden;
 
+  /// No description provided for @forgotPassword.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسيت كلمة المرور؟'**
+  String get forgotPassword;
+
   /// No description provided for @internalError.
   ///
   /// In ar, this message translates to:

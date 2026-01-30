@@ -33,6 +33,9 @@ class HelperLocalizationsEn extends HelperLocalizations {
   String get forbidden => 'Forbidden request';
 
   @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
   String get internalError => 'Internal Error';
 
   @override

@@ -34,6 +34,9 @@ class HelperLocalizationsAr extends HelperLocalizations {
   String get forbidden => 'طلب غير مصرح به';
 
   @override
+  String get forgotPassword => 'نسيت كلمة المرور؟';
+
+  @override
   String get internalError => 'خطأ داخلي';
 
   @override

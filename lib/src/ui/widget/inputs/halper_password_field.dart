@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:helper/src/ui/context_extension.dart';
 import 'package:helper/src/ui/widget/inputs/helper_form_field.dart';
 
-class PasswordField extends StatefulWidget {
-  const PasswordField({
+class HelperPasswordField extends StatefulWidget {
+  const HelperPasswordField({
     super.key,
     required this.name,
     required this.label,
+    this.onForgotPassword,
   });
 
   final String name;
   final String label;
+  final VoidCallback? onForgotPassword;
 
   @override
-  State<PasswordField> createState() => _PasswordFieldState();
+  State<HelperPasswordField> createState() => _HelperPasswordFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
+class _HelperPasswordFieldState extends State<HelperPasswordField> {
   bool _showPassword = false;
 
   @override
   Widget build(BuildContext context) {
+    late final forgotPasswordButton = TextButton(
+      style: ButtonStyle(
+        visualDensity: VisualDensity(vertical: -4),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      onPressed: widget.onForgotPassword,
+      child: Text(context.helperL10n.forgotPassword),
+    );
+
     return HelperFormField(
       name: widget.name,
       labelText: widget.label,
+      counter: widget.onForgotPassword != null ? forgotPasswordButton : null,
       suffix: IconButton(
         style: const ButtonStyle(
           visualDensity: VisualDensity(vertical: -4, horizontal: -4),

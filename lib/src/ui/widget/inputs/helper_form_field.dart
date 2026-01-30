@@ -17,6 +17,7 @@ class HelperFormField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType,
     this.maxLines = 1,
+    this.counter,
     this.prefix,
     this.prefixIcon,
     this.prefixText,
@@ -38,6 +39,7 @@ class HelperFormField extends StatelessWidget {
   final int? maxLines;
 
   // Input decoration fields
+  final Widget? counter;
   final Widget? prefix;
   final Widget? prefixIcon;
   final String? prefixText;
@@ -64,6 +66,7 @@ class HelperFormField extends StatelessWidget {
       keyboardType: keyboardType,
       maxLines: maxLines,
       decoration: InputDecoration(
+        counter: counter,
         labelText: labelText,
         prefix: prefix,
         prefixIcon: prefixIcon,
