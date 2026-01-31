@@ -78,12 +78,12 @@ class HelperFormField extends StatelessWidget {
         suffixIcon: suffixIcon,
         suffixText: suffixText,
         visualDensity: visualDensity,
-        border: enabled ? null : disabledBorder,
-        disabledBorder: enabled ? null : disabledBorder,
-        enabledBorder: enabled ? null : disabledBorder,
-        errorBorder: enabled ? null : disabledBorder,
-        focusedBorder: enabled ? null : disabledBorder,
-        focusedErrorBorder: enabled ? null : disabledBorder,
+        border: !enabled || readOnly ? disabledBorder : null,
+        disabledBorder: !enabled || readOnly ? disabledBorder : null,
+        enabledBorder: !enabled || readOnly ? disabledBorder : null,
+        errorBorder: !enabled || readOnly ? disabledBorder : null,
+        focusedBorder: !enabled || readOnly ? disabledBorder : null,
+        focusedErrorBorder: !enabled || readOnly ? disabledBorder : null,
         error: errors.isEmpty
             ? null
             : showFirstErrorOnly
