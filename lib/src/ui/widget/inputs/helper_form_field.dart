@@ -11,6 +11,7 @@ class HelperFormField extends StatelessWidget {
     this.initialValue,
     this.labelText,
     this.enabled = true,
+    this.readOnly = false,
     this.isRequired = true,
     this.validator,
     this.showFirstErrorOnly = false,
@@ -31,6 +32,7 @@ class HelperFormField extends StatelessWidget {
   final String? initialValue;
   final String? labelText;
   final bool enabled;
+  final bool readOnly;
   final bool isRequired;
   final String? Function(String?)? validator;
   final bool showFirstErrorOnly;
@@ -61,6 +63,7 @@ class HelperFormField extends StatelessWidget {
 
     return FormBuilderTextField(
       name: name,
+      readOnly: readOnly,
       initialValue: initialValue,
       enabled: enabled,
       keyboardType: keyboardType,
