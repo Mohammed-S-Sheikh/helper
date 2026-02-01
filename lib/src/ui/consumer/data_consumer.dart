@@ -71,6 +71,14 @@ class _DataConsumerState<DataT> extends State<DataConsumer<DataT>> {
           },
         );
 
+    if (widget.onSuccess != null) {
+      _controller.setOnData(widget.onSuccess!);
+    }
+
+    if (widget.onFailure != null) {
+      _controller.setOnFailure(widget.onFailure!);
+    }
+
     if (_controller.onFailure == null && widget.handleFailure) {
       _controller.setOnFailure((controller, failure) {
         widget.failureBehavior.handle(context, failure);
